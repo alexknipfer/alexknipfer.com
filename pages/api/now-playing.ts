@@ -1,7 +1,8 @@
 import { NextApiResponse, NextApiRequest } from 'next';
+
 import { SpotifyNowPlayingResponse } from '@/interfaces/Spotify';
 import { getNowPlayingTrack } from '@/lib/spotify';
-import { serialize } from 'serializers/nowPlayingSerializer';
+import { serialize } from '@/serializers/nowPlayingSerializer';
 
 export interface NowPlayingResponse {
   isPlaying: boolean;

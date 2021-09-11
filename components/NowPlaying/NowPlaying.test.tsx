@@ -1,10 +1,12 @@
+import * as NextImage from 'next/image';
+import { ImageProps } from 'next/image';
+
+import { NowPlayingResponse } from '../../pages/api/now-playing';
+
 import { render, screen } from '@/test-utils';
 import NowPlaying from '@/components/NowPlaying';
-import { ImageProps } from 'next/image';
-import * as NextImage from 'next/image';
 import { rest, server } from '@/test/server';
 import { NowPlayingResponseFactory } from '@/test/factories/NowPlayingResponseFactory';
-import { NowPlayingResponse } from 'pages/api/now-playing';
 
 /**
  * Current workaround for next/image until finding a better way for handling

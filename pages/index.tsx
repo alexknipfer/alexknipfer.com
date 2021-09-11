@@ -1,11 +1,12 @@
+import { NextPage } from 'next';
+
+import GitHubIcon from '../public/static/icons/github.svg';
+
 import DefaultLayout from '@/components/DefaultLayout';
 import Meta from '@/components/Meta';
 import Heading from '@/components/Heading';
 import ProjectCard from '@/components/ProjectCard';
 import TechnicalSkills from '@/components/TechnicalSkills';
-import { NextPage } from 'next';
-
-import GitHubIcon from '../public/static/icons/github.svg';
 
 const projects = [
   {

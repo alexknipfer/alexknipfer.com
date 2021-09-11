@@ -1,6 +1,7 @@
+import { NextPage } from 'next';
+
 import DefaultLayout from '@/components/DefaultLayout';
 import Heading from '@/components/Heading';
-import { NextPage } from 'next';
 import Meta from '@/components/Meta';
 import ExperienceDetails from '@/components/ExperienceDetails';
 
