@@ -1,5 +1,6 @@
-import Link from 'next/link';
 import { useTrail, animated } from 'react-spring';
+import Link from 'next/link';
+
 import Overlay from '@/components/Overlay';
 import { navItems } from '@/components/Nav';
 

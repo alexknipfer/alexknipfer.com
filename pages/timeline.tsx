@@ -1,4 +1,5 @@
 import { NextPage } from 'next';
+
 import DefaultLayout from '@/components/DefaultLayout';
 import Meta from '@/components/Meta';
 import Heading from '@/components/Heading';

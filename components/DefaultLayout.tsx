@@ -1,4 +1,5 @@
 import { useEffect, Fragment } from 'react';
+
 import { initGA, logPageView } from '@/lib/analytics';
 import Navigation from '@/components/Nav';
 import Footer from '@/components/Footer';

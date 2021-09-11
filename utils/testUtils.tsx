@@ -1,9 +1,16 @@
 import React from 'react';
 import { render, RenderOptions } from '@testing-library/react';
-import { SWRConfig } from 'swr';
+
+import CustomSWRConfig from '@/components/CustomSWRConfig';
 
 const Wrapper: React.FC = ({ children }) => {
-  return <SWRConfig value={{ dedupingInterval: 0 }}>{children}</SWRConfig>;
+  return (
+    <CustomSWRConfig
+      swrConfig={{ dedupingInterval: 0, provider: () => new Map() }}
+    >
+      {children}
+    </CustomSWRConfig>
+  );
 };
 
 const customerRender = (ui: React.ReactElement, options?: RenderOptions) =>
