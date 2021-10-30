@@ -9,7 +9,7 @@ import {
   SpotifyAlbum,
   SpotifyImage,
   SpotifySong,
-} from '@/interfaces/Spotify';
+} from '@/models/Spotify';
 
 export const SpotifyNowPlayingFactory =
   Factory.define<SpotifyNowPlayingResponse>(

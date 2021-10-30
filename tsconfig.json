@@ -19,12 +19,13 @@
       "@/components/*": ["components/*"],
       "@/layouts/*": ["layouts/*"],
       "@/lib/*": ["lib/*"],
-      "@/interfaces/*": ["interfaces/*"],
+      "@/models/*": ["models/*"],
       "@/styles/*": ["styles/*"],
       "@/public/*": ["public/*"],
       "@/test/*": ["test/*"],
       "@/test-utils": ["utils/testUtils"],
-      "@/serializers/*": ["serializers/*"]
+      "@/serializers/*": ["serializers/*"],
+      "@/utils/*": ["utils/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.test.tsx"],

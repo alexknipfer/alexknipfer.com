@@ -1,7 +1,7 @@
 import { pick, pipe, map, join, head, prop } from 'ramda';
 import { NowPlayingResponse } from 'pages/api/now-playing';
 
-import { SpotifyArtist, SpotifyNowPlayingResponse } from '@/interfaces/Spotify';
+import { SpotifyArtist, SpotifyNowPlayingResponse } from '@/models/Spotify';
 
 const spotifyItemPicks = ['name', 'artists', 'album', 'external_urls', 'id'];
 
