@@ -6,7 +6,10 @@ import { NowPlayingResponse } from '../../pages/api/now-playing';
 import { render, screen } from '@/test-utils';
 import NowPlaying from '@/components/NowPlaying';
 import { rest, server } from '@/test/server';
-import { NowPlayingResponseFactory } from '@/test/factories/NowPlayingResponseFactory';
+import {
+  NowPlayingAttributesFactory,
+  NowPlayingFactory,
+} from '@/test/factories/NowPlayingResponseFactory';
 
 /**
  * Current workaround for next/image until finding a better way for handling
@@ -24,8 +27,8 @@ describe('successful response from now playing', () => {
   let nowPlayingResponse: NowPlayingResponse;
 
   beforeEach(() => {
-    nowPlayingResponse = NowPlayingResponseFactory.build({
-      isPlaying: true,
+    nowPlayingResponse = NowPlayingFactory.build({
+      attributes: NowPlayingAttributesFactory.build({ isPlaying: true }),
     });
 
     server.use(
@@ -39,13 +42,15 @@ describe('successful response from now playing', () => {
     render(<NowPlaying />);
 
     const songAnchorElement = await screen.findByRole('link', {
-      name: nowPlayingResponse.songName,
+      name: nowPlayingResponse.attributes.songName,
     });
 
-    expect(songAnchorElement).toHaveTextContent(nowPlayingResponse.songName);
+    expect(songAnchorElement).toHaveTextContent(
+      nowPlayingResponse.attributes.songName,
+    );
     expect(songAnchorElement).toHaveAttribute(
       'href',
-      nowPlayingResponse.songUrl,
+      nowPlayingResponse.attributes.songUrl,
     );
   });
 
@@ -53,7 +58,7 @@ describe('successful response from now playing', () => {
     render(<NowPlaying />);
 
     const songAnchorElement = await screen.findByRole('link', {
-      name: nowPlayingResponse.songName,
+      name: nowPlayingResponse.attributes.songName,
     });
 
     expect(songAnchorElement).toHaveAttribute('target', '_blank');
@@ -63,7 +68,9 @@ describe('successful response from now playing', () => {
   test('displays artist(s) name', async () => {
     render(<NowPlaying />);
 
-    const artistElement = await screen.findByText(nowPlayingResponse.artists);
+    const artistElement = await screen.findByText(
+      nowPlayingResponse.attributes.artists,
+    );
 
     expect(artistElement).toBeInTheDocument();
   });
@@ -73,8 +80,8 @@ describe('song is not currently playing', () => {
   let nowPlayingResponse: NowPlayingResponse;
 
   beforeEach(() => {
-    nowPlayingResponse = NowPlayingResponseFactory.build({
-      isPlaying: false,
+    nowPlayingResponse = NowPlayingFactory.build({
+      attributes: NowPlayingAttributesFactory.build({ isPlaying: false }),
     });
 
     server.use(
