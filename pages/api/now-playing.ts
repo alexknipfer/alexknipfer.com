@@ -1,8 +1,11 @@
 import { NextApiResponse, NextApiRequest } from 'next';
 
-import { SpotifyNowPlayingResponse } from '@/interfaces/Spotify';
+import { SpotifyNowPlayingResponse } from '@/models/Spotify';
 import { getNowPlayingTrack } from '@/lib/spotify';
 import { serialize } from '@/serializers/nowPlayingSerializer';
+import { HttpStatusCode } from '@/models/Http';
+import { APIError, SpotifyError } from '@/models/errors';
+import { errorHandler } from '@/utils/errorHandler';
 
 export interface NowPlayingResponse {
   id: string;
@@ -19,26 +22,21 @@ export interface NowPlayingResponse {
 
 export default async (
   _: NextApiRequest,
-  res: NextApiResponse<NowPlayingResponse>,
+  res: NextApiResponse<NowPlayingResponse | APIError>,
 ) => {
   const response = await getNowPlayingTrack();
 
   if (response.status === 204 || response.status > 400) {
-    return res.status(200).json({
-      id: '',
-      type: 'spotify',
-      attributes: {
-        isPlaying: false,
-        songName: '',
-        artists: '',
-        album: '',
-        albumImage: '',
-        songUrl: '',
-      },
-    });
+    return errorHandler(
+      res,
+      new SpotifyError(
+        'Unable to fetch currently playing track',
+        HttpStatusCode.BAD_REQUEST,
+      ),
+    );
   }
 
   const nowPlayingResponse: SpotifyNowPlayingResponse = await response.json();
 
-  return res.status(200).json(serialize(nowPlayingResponse));
+  return res.status(HttpStatusCode.SUCCESS).json(serialize(nowPlayingResponse));
 };
