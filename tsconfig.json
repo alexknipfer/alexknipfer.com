@@ -26,7 +26,8 @@
       "@/test-utils": ["utils/testUtils"],
       "@/serializers/*": ["serializers/*"],
       "@/utils/*": ["utils/*"]
-    }
+    },
+    "incremental": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.test.tsx"],
   "exclude": ["node_modules"]
