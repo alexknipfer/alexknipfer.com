@@ -1,5 +1,6 @@
 import { Factory } from 'rosie';
 import faker from 'faker';
+
 import {
   Context,
   ExternalUrls,
@@ -8,7 +9,7 @@ import {
   SpotifyAlbum,
   SpotifyImage,
   SpotifySong,
-} from '@/interfaces/Spotify';
+} from '@/models/Spotify';
 
 export const SpotifyNowPlayingFactory =
   Factory.define<SpotifyNowPlayingResponse>(

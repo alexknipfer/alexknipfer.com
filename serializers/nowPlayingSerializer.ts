@@ -1,24 +1,29 @@
-import { SpotifyNowPlayingResponse } from '@/interfaces/Spotify';
+import { pick, pipe, map, join, head, prop } from 'ramda';
 import { NowPlayingResponse } from 'pages/api/now-playing';
+
+import { SpotifyArtist, SpotifyNowPlayingResponse } from '@/models/Spotify';
+
+const spotifyItemPicks = ['name', 'artists', 'album', 'external_urls', 'id'];
 
 export function serialize(
   spotifyNowPlayingResponse: SpotifyNowPlayingResponse,
 ): NowPlayingResponse {
-  const isPlaying = spotifyNowPlayingResponse.is_playing;
-  const songName = spotifyNowPlayingResponse.item.name;
-  const artists = spotifyNowPlayingResponse.item.artists
-    .map((artist) => artist.name)
-    .join(', ');
-  const album = spotifyNowPlayingResponse.item.album.name;
-  const albumImage = spotifyNowPlayingResponse.item.album.images[0].url;
-  const songUrl = spotifyNowPlayingResponse.item.external_urls.spotify;
+  const attributes = pick(spotifyItemPicks, spotifyNowPlayingResponse.item);
+  const commaDelimitedArtists = pipe(
+    map((a: SpotifyArtist) => a.name),
+    join(', '),
+  );
 
   return {
-    isPlaying,
-    songName,
-    artists,
-    album,
-    albumImage,
-    songUrl,
+    id: attributes.id,
+    type: 'spotify',
+    attributes: {
+      isPlaying: spotifyNowPlayingResponse.is_playing,
+      songName: attributes.name,
+      artists: commaDelimitedArtists(attributes.artists),
+      album: attributes.album.name,
+      albumImage: prop('url', head(attributes.album.images)),
+      songUrl: attributes.external_urls.spotify,
+    },
   };
 }

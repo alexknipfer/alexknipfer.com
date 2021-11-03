@@ -2,9 +2,17 @@ import { Factory } from 'rosie';
 import faker from 'faker';
 import { NowPlayingResponse } from 'pages/api/now-playing';
 
-export const NowPlayingResponseFactory = Factory.define<NowPlayingResponse>(
-  'now-playing-response-factory',
-)
+export const NowPlayingFactory = Factory.define<NowPlayingResponse>(
+  'now-playing-factory',
+).attrs({
+  id: faker.datatype.uuid(),
+  type: 'spotify',
+  attributes: () => NowPlayingAttributesFactory.build(),
+});
+
+export const NowPlayingAttributesFactory = Factory.define<
+  NowPlayingResponse['attributes']
+>('now-playing-attributes-factory')
   .attr('isPlaying', () => faker.datatype.boolean())
   .attr('songName', () => faker.name.title())
   .attr('artists', () => faker.name.firstName())
