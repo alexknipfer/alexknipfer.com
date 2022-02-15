@@ -1,6 +1,8 @@
 import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
+import { appConfig } from '../lib/appConfig';
+
 class MyDocument extends Document {
   render() {
     return (
@@ -40,6 +42,20 @@ class MyDocument extends Document {
           <meta name="msapplication-TileColor" content="#da532c" />
           <meta name="theme-color" content="#ffffff" />
           <meta charSet="utf-8" />
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${appConfig.google.analytics}}`}
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${appConfig.google.analytics}');
+              `,
+            }}
+          />
         </Head>
         <body className="font-sans bg:white dark:bg-gray-900">
           <Main />
