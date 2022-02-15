@@ -1,28 +1,21 @@
-class AppConfig {
-  public readonly spotifyClientId: string = '';
-  public readonly spotifyClientSecret: string = '';
-  public readonly spotifyRefreshToken: string = '';
-  public readonly isOnServer = typeof window === 'undefined';
+const loadEnvironmentVariable = (key: string): string => {
+  const isOnServer = typeof window === 'undefined';
+  const envVariable = process.env[key];
 
-  constructor() {
-    this.spotifyClientId = this.loadEnvironmentVariable('SPOTIFY_CLIENT_ID');
-    this.spotifyClientSecret = this.loadEnvironmentVariable(
-      'SPOTIFY_CLIENT_SECRET',
-    );
-    this.spotifyRefreshToken = this.loadEnvironmentVariable(
-      'SPOTIFY_REFRESH_TOKEN',
-    );
+  if (!envVariable && isOnServer) {
+    throw new Error(`Must configure ${key} environment variable.`);
   }
 
-  private loadEnvironmentVariable(key: string): string {
-    const envVariable = process.env[key];
+  return envVariable;
+};
 
-    if (!envVariable && this.isOnServer) {
-      throw new Error(`Must configure ${key} environment variable.`);
-    }
-
-    return envVariable;
-  }
-}
-
-export const appConfig = new AppConfig();
+export const appConfig = {
+  spotify: {
+    clientId: loadEnvironmentVariable('SPOTIFY_CLIENT_ID'),
+    clientSecret: loadEnvironmentVariable('SPOTIFY_CLIENT_SECRET'),
+    refreshToken: loadEnvironmentVariable('SPOTIFY_REFRESH_TOKEN'),
+  },
+  google: {
+    analytics: loadEnvironmentVariable('NEXT_PUBLIC_GOOGLE_ANALYTICS'),
+  },
+};
