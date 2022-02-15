@@ -4,7 +4,7 @@ import { SpotifyTokenResponse } from '@/models/Spotify';
 import { appConfig } from '@/lib/appConfig';
 
 const authToken = Buffer.from(
-  `${appConfig.spotifyClientId}:${appConfig.spotifyClientSecret}`,
+  `${appConfig.spotify.clientId}:${appConfig.spotify.clientSecret}`,
 ).toString('base64');
 
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
@@ -19,7 +19,7 @@ const getAccessToken = async (): Promise<SpotifyTokenResponse> => {
     },
     body: querystring.stringify({
       grant_type: 'refresh_token',
-      refresh_token: appConfig.spotifyRefreshToken,
+      refresh_token: appConfig.spotify.refreshToken,
     }),
   });
 
