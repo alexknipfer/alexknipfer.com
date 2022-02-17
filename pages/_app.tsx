@@ -6,7 +6,6 @@ import { useRouter } from 'next/router';
 import Script from 'next/script';
 
 import '@/styles/global.css';
-import '@/styles/tailwind.css';
 import CustomSWRConfig from '@/components/CustomSWRConfig';
 import { pageview } from '@/lib/analytics';
 import { appConfig } from '@/lib/appConfig';
