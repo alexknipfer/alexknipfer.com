@@ -3,11 +3,13 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { ThemeProvider } from 'next-themes';
 import { useRouter } from 'next/router';
+import Script from 'next/script';
 
 import '@/styles/global.css';
 import '@/styles/tailwind.css';
 import CustomSWRConfig from '@/components/CustomSWRConfig';
 import { pageview } from '@/lib/analytics';
+import { appConfig } from '@/lib/appConfig';
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   const router = useRouter();
@@ -32,6 +34,18 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
         />
       </Head>
+      <Script
+        strategy="lazyOnload"
+        src={`https://www.googletagmanager.com/gtag/js?id=${appConfig.google.analytics}}`}
+      />
+      <Script strategy="lazyOnload">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${appConfig.google.analytics}');
+        `}
+      </Script>
       <CustomSWRConfig>
         <Component {...pageProps} />
       </CustomSWRConfig>
