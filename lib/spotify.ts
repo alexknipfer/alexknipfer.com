@@ -1,5 +1,3 @@
-import querystring from 'querystring';
-
 import { SpotifyTokenResponse } from '@/models/Spotify';
 import { appConfig } from '@/lib/appConfig';
 
@@ -17,7 +15,7 @@ const getAccessToken = async (): Promise<SpotifyTokenResponse> => {
       Authorization: `Basic ${authToken}`,
       'Content-Type': 'application/x-www-form-urlencoded',
     },
-    body: querystring.stringify({
+    body: new URLSearchParams({
       grant_type: 'refresh_token',
       refresh_token: appConfig.spotify.refreshToken,
     }),
