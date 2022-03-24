@@ -8,11 +8,11 @@ const NowPlaying: React.FC = () => {
   if (isLoading) {
     return (
       <div className="relative animate-pulse border border-card-border rounded-md flex items-center w-64 p-3 shadow">
-        <div className="bg-gray-200 h-14 w-14 rounded mr-4"></div>
-        <div className="bg-gray-200 absolute top-2 right-2 h-3.5 w-3.5 rounded-full"></div>
+        <div className="bg-gray-200 dark:bg-gray-600 h-14 w-14 rounded mr-4"></div>
+        <div className="bg-gray-200 dark:bg-gray-600 absolute top-2 right-2 h-3.5 w-3.5 rounded-full"></div>
         <div className="w-3/4">
-          <div className="h-4 w-2/5 bg-gray-200 mb-2"></div>
-          <div className="h-4 w-3/4 bg-gray-200"></div>
+          <div className="h-4 w-2/5 bg-gray-200 dark:bg-gray-600 mb-2"></div>
+          <div className="h-4 w-3/4 bg-gray-200 dark:bg-gray-600"></div>
         </div>
       </div>
     );
