@@ -1,6 +1,3 @@
-import * as NextImage from 'next/image';
-import { ImageProps } from 'next/image';
-
 import { NowPlayingResponse } from '../../pages/api/now-playing';
 
 import { render, screen } from '@/test-utils';
@@ -17,11 +14,9 @@ import {
  *
  * https://github.com/vercel/next.js/issues/21549
  */
-const OriginalNextImage = NextImage.default;
-Object.defineProperty(NextImage, 'default', {
-  configurable: true,
-  value: (props: ImageProps) => <OriginalNextImage {...props} unoptimized />,
-});
+jest.mock('next/image', () => ({ src, alt }: any) => (
+  <img src={src} alt={alt} />
+));
 
 describe('successful response from now playing', () => {
   let nowPlayingResponse: NowPlayingResponse;
