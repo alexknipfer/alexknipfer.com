@@ -12,6 +12,7 @@ module.exports = {
   moduleNameMapper: {
     '@/components/(.*)': '<rootDir>/components/$1',
     '@/serializers/(.*)': '<rootDir>/serializers/$1',
+    '@/lib/(.*)': '<rootDir>/lib/$1',
     '@/test/(.*)': '<rootDir>/test/$1',
     '@/test-utils': '<rootDir>/utils/testUtils',
   },
