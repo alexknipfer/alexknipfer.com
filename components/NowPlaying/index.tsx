@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { useNowPlaying } from '@/lib/useNowPlaying';
+import useNowPlaying from '@/lib/useNowPlaying';
 
 const NowPlaying: React.FC = () => {
   const { isPlaying, isLoading, data } = useNowPlaying();
