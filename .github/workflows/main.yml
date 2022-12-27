@@ -26,6 +26,8 @@ jobs:
 
       - name: Install deps and build (with cache)
         uses: pnpm/action-setup@v2
+        with:
+          version: 7
 
       - name: Lint
         run: pnpm run lint
