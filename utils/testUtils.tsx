@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import { render, RenderOptions } from '@testing-library/react';
 
 import CustomSWRConfig from '@/components/CustomSWRConfig';
 
-const Wrapper: React.FC = ({ children }) => {
+function Wrapper({ children }: PropsWithChildren) {
   return (
     <CustomSWRConfig
       swrConfig={{ dedupingInterval: 0, provider: () => new Map() }}
@@ -11,7 +11,7 @@ const Wrapper: React.FC = ({ children }) => {
       {children}
     </CustomSWRConfig>
   );
-};
+}
 
 const customerRender = (ui: React.ReactElement, options?: RenderOptions) =>
   render(ui, { wrapper: Wrapper, ...options });

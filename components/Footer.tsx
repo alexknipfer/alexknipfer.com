@@ -34,7 +34,7 @@ const socialAccounts = [
   },
 ];
 
-const Footer: React.FC = () => {
+export default function Footer() {
   return (
     <footer className="flex flex-col items-center py-6">
       <NowPlaying />
@@ -58,6 +58,4 @@ const Footer: React.FC = () => {
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

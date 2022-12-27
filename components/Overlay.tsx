@@ -1,8 +1,13 @@
+import { PropsWithChildren } from 'react';
+
 interface Props {
   isVisible: boolean;
 }
 
-const Overlay: React.FC<Props> = ({ children, isVisible }) => {
+export default function Overlay({
+  children,
+  isVisible,
+}: PropsWithChildren<Props>) {
   if (!isVisible) {
     return null;
   }
@@ -12,6 +17,4 @@ const Overlay: React.FC<Props> = ({ children, isVisible }) => {
       {children}
     </div>
   );
-};
-
-export default Overlay;
+}

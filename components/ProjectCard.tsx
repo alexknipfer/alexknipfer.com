@@ -9,7 +9,7 @@ interface Props {
   img: string;
 }
 
-const ProjectCard: React.FC<Props> = ({ name, link, img }) => {
+export default function ProjectCard({ name, link, img }: Props) {
   const { onClose, onOpen, isOpen } = useDisclosure();
 
   return (
@@ -51,6 +51,4 @@ const ProjectCard: React.FC<Props> = ({ name, link, img }) => {
       />
     </div>
   );
-};
-
-export default ProjectCard;
+}

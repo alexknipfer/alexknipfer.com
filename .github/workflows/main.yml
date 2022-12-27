@@ -12,7 +12,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node: ['14.x', '16.x', '17.x']
+        node: ['18.x']
         os: [ubuntu-latest, windows-latest, macOS-latest]
 
     steps:
@@ -24,14 +24,21 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - name: Install deps and build (with cache)
-        uses: bahmutov/npm-install@v1
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Lint
-        run: yarn lint
+        run: pnpm run lint
 
       - name: Test
-        run: yarn test --ci --coverage --maxWorkers=2
+        run: pnpm run test --ci --coverage --maxWorkers=2
 
       - name: Build
-        run: yarn build
+        run: pnpm run build

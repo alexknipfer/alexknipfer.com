@@ -10,13 +10,13 @@ interface Props {
   listItems: string[];
 }
 
-const ExperienceDetails: React.FC<Props> = ({
+export default function ExperienceDetails({
   organizationName,
   timeframe,
   websiteUrl,
   title,
   listItems,
-}) => {
+}: Props) {
   return (
     <div className="border-l border-dashed border-gray-700 dark:border-gray-400 pl-5 mb-10 last:mb-0">
       <Heading level="h3" className="mb-2">
@@ -27,6 +27,4 @@ const ExperienceDetails: React.FC<Props> = ({
       <List listItems={listItems} />
     </div>
   );
-};
-
-export default ExperienceDetails;
+}

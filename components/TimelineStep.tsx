@@ -5,7 +5,7 @@ interface Props {
   description: string;
 }
 
-const TimelineStep: React.FC<Props> = ({ name, description }) => {
+export default function TimelineStep({ name, description }: Props) {
   return (
     <li className="mb-5 last:mb-0 text-gray-700 dark:text-gray-200">
       <div className="flex items-center mb-2">
@@ -19,6 +19,4 @@ const TimelineStep: React.FC<Props> = ({ name, description }) => {
       <p className="ml-8">{description}</p>
     </li>
   );
-};
-
-export default TimelineStep;
+}

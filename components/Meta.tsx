@@ -7,7 +7,7 @@ interface Props {
   description?: string;
 }
 
-const Meta: React.FC<Props> = (customMeta) => {
+export default function Meta(customMeta: Props) {
   const router = useRouter();
 
   const meta = {
@@ -40,6 +40,4 @@ const Meta: React.FC<Props> = (customMeta) => {
       <meta name="twitter:image" content={meta.image} />
     </Head>
   );
-};
-
-export default Meta;
+}

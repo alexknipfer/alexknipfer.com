@@ -8,7 +8,7 @@ interface Props {
   isOpen: boolean;
 }
 
-const Menu: React.FC<Props> = ({ isOpen }) => {
+export default function Menu({ isOpen }: Props) {
   const navItemsTrail = useTrail(navItems.length, {
     opacity: isOpen ? 1 : 0,
     marginLeft: isOpen ? 20 : -100,
@@ -24,16 +24,15 @@ const Menu: React.FC<Props> = ({ isOpen }) => {
             key={navItems[index].path}
             style={{ marginBottom: 27, ...props }}
           >
-            <Link href={navItems[index].path}>
-              <a className="text-3xl text-black dark:text-gray-200 uppercase border-l border-solid border-black dark:border-gray-200 pl-4">
-                {navItems[index].name}
-              </a>
+            <Link
+              className="text-3xl text-black dark:text-gray-200 uppercase border-l border-solid border-black dark:border-gray-200 pl-4"
+              href={navItems[index].path}
+            >
+              {navItems[index].name}
             </Link>
           </animated.div>
         ))}
       </div>
     </Overlay>
   );
-};
-
-export default Menu;
+}

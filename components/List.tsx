@@ -2,7 +2,7 @@ interface Props {
   listItems: string[];
 }
 
-const List: React.FC<Props> = ({ listItems }) => {
+export default function List({ listItems }: Props) {
   return (
     <ul className="text-gray-700 dark:text-gray-200 list-arrow">
       {listItems.map((item, index) => (
@@ -13,6 +13,4 @@ const List: React.FC<Props> = ({ listItems }) => {
       ))}
     </ul>
   );
-};
-
-export default List;
+}

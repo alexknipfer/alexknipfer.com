@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import MoonIcon from '../public/static/icons/moon.svg';
 import SunIcon from '../public/static/icons/sun.svg';
 
-const ThemeSwitchButton: React.FC = () => {
+export default function ThemeSwitchButton() {
   const { setTheme, resolvedTheme } = useTheme();
   const [isMounted, setMounted] = useState(false);
 
@@ -22,6 +22,4 @@ const ThemeSwitchButton: React.FC = () => {
       {isMounted && <DarkModeSwitchIcon className="fill-current" />}
     </button>
   );
-};
-
-export default ThemeSwitchButton;
+}

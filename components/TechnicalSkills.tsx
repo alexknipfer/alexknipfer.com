@@ -32,18 +32,18 @@ const technicalSkills = [
   },
 ];
 
-const TechnicalSkills: React.FC = () => (
-  <div className="grid grid-cols-1 md:grid-cols-2 auto-rows-auto gap-5 mb-5">
-    {technicalSkills.map(({ icon: Icon, name }) => (
-      <div
-        key={name}
-        className="border-card-border border rounded p-5 flex items-center text-sm text-gray-700 dark:text-gray-200"
-      >
-        <Icon width={30} height={30} className="mr-5 fill-current" />
-        {name}
-      </div>
-    ))}
-  </div>
-);
-
-export default TechnicalSkills;
+export default function TechnicalSkills() {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 auto-rows-auto gap-5 mb-5">
+      {technicalSkills.map(({ icon: Icon, name }) => (
+        <div
+          key={name}
+          className="border-card-border border rounded p-5 flex items-center text-sm text-gray-700 dark:text-gray-200"
+        >
+          <Icon width={30} height={30} className="mr-5 fill-current" />
+          {name}
+        </div>
+      ))}
+    </div>
+  );
+}
