@@ -38,7 +38,7 @@ const Home: NextPage = () => {
       <Meta />
       <section className="mb-10 flex flex-col-reverse md:flex-row md:justify-between md:items-center">
         <div>
-          <h1 className="font-bold text-black dark:text-white text-3xl md:text-4xl">
+          <h1 className="font-bold text-black dark:text-white text-3xl md:text-4xl mb-1">
             Alexander Knipfer
           </h1>
           <h2 className=" text-black dark:text-white text-base md:text-lg">
