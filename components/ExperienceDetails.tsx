@@ -23,7 +23,7 @@ export default function ExperienceDetails({
         {title}&nbsp;@&nbsp;
         <Anchor href={websiteUrl}>{organizationName}</Anchor>
       </Heading>
-      <p className="text-gray-700 dark:text-gray-200 mb-4">{timeframe}</p>
+      <p className="text-gray-700 dark:text-gray-300 mb-4">{timeframe}</p>
       <List listItems={listItems} />
     </div>
   );

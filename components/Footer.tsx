@@ -49,7 +49,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
-              className="hover:bg-gray-100 dark:hover:bg-gray-800 p-3 rounded transition duration-300 text-gray-700 dark:text-gray-200"
+              className="hover:bg-gray-100 dark:hover:bg-gray-800 p-3 rounded transition duration-300 text-gray-700 dark:text-gray-300"
             >
               <Icon width={20} height={20} className="fill-current" />
             </a>

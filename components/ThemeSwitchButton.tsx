@@ -17,7 +17,7 @@ export default function ThemeSwitchButton() {
     <button
       aria-label="Toggle dark mode"
       onClick={() => setTheme(isDarkTheme ? 'light' : 'dark')}
-      className="p-2 dark:text-gray-200 text-gray-700 bg-gray-200 dark:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50"
+      className="p-2 dark:text-gray-300 text-gray-700 bg-gray-200 dark:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50"
     >
       {isMounted && <DarkModeSwitchIcon className="fill-current" />}
     </button>
