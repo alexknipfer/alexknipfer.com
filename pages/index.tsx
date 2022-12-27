@@ -1,4 +1,5 @@
 import { NextPage } from 'next';
+import Image from 'next/image';
 
 import GitHubIcon from '../public/static/icons/github.svg';
 
@@ -7,7 +8,6 @@ import Meta from '@/components/Meta';
 import Heading from '@/components/Heading';
 import ProjectCard from '@/components/ProjectCard';
 import TechnicalSkills from '@/components/TechnicalSkills';
-import Image from 'next/image';
 
 const projects = [
   {
