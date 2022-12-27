@@ -29,7 +29,7 @@ export default function Nav() {
       <div className="flex justify-between items-center w-full h-16">
         <button
           aria-label="Open navigation menu"
-          className="relative z-40 md:hidden text-gray-900 dark:text-gray-200"
+          className="relative z-40 md:hidden text-gray-900 dark:text-gray-300"
           onClick={onToggle}
         >
           <MenuIcon isOpen={isOpen} />

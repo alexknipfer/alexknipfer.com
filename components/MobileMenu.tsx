@@ -25,7 +25,7 @@ export default function Menu({ isOpen }: Props) {
             style={{ marginBottom: 27, ...props }}
           >
             <Link
-              className="text-3xl text-black dark:text-gray-200 uppercase border-l border-solid border-black dark:border-gray-200 pl-4"
+              className="text-3xl text-black dark:text-gray-300 uppercase border-l border-solid border-black dark:border-gray-200 pl-4"
               href={navItems[index].path}
             >
               {navItems[index].name}

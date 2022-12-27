@@ -7,7 +7,7 @@ interface Props {
 
 export default function TimelineStep({ name, description }: Props) {
   return (
-    <li className="mb-5 last:mb-0 text-gray-700 dark:text-gray-200">
+    <li className="mb-5 last:mb-0 text-gray-700 dark:text-gray-300">
       <div className="flex items-center mb-2">
         <CheckmarkIcon
           width={24}

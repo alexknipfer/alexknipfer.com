@@ -28,7 +28,7 @@ export default function ProjectCard({ name, link, img }: Props) {
         )}
       >
         <div className="bg-black bg-opacity-70 mt-auto rounded-b-md flex items-center flex-col py-3 px-4 text-center">
-          <div className="font-thin text-gray-200">{name}</div>
+          <div className="font-thin text-gray-300">{name}</div>
           <a
             href={link}
             target="_blank"

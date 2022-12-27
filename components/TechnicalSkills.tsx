@@ -38,7 +38,7 @@ export default function TechnicalSkills() {
       {technicalSkills.map(({ icon: Icon, name }) => (
         <div
           key={name}
-          className="border-card-border border rounded p-5 flex items-center text-sm text-gray-700 dark:text-gray-200"
+          className="border-card-border border rounded p-5 flex items-center text-sm text-gray-700 dark:text-gray-300"
         >
           <Icon width={30} height={30} className="mr-5 fill-current" />
           {name}

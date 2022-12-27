@@ -49,7 +49,7 @@ const Experience: NextPage = () => {
     <DefaultLayout>
       <Meta />
       <Heading level="h1">Experience</Heading>
-      <p className="text-gray-700 dark:text-gray-200 mb-10">
+      <p className="text-gray-700 dark:text-gray-300 mb-10">
         Curious to hear more about my experience? You&apos;re in the right
         place! I graduated with a degree in Computer Science in 2017, I&apos;ve
         had the opportunity to work at some awesome places since then!
