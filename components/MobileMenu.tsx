@@ -8,7 +8,7 @@ interface Props {
   isOpen: boolean;
 }
 
-const Menu: React.FC<Props> = ({ isOpen }) => {
+export default function Menu({ isOpen }: Props) {
   const navItemsTrail = useTrail(navItems.length, {
     opacity: isOpen ? 1 : 0,
     marginLeft: isOpen ? 20 : -100,
@@ -34,6 +34,4 @@ const Menu: React.FC<Props> = ({ isOpen }) => {
       </div>
     </Overlay>
   );
-};
-
-export default Menu;
+}

@@ -20,7 +20,7 @@ export const navItems = [
   },
 ];
 
-const Nav: React.FC = () => {
+export default function Nav() {
   const { onToggle, isOpen } = useDisclosure();
 
   return (
@@ -52,6 +52,4 @@ const Nav: React.FC = () => {
       `}</style>
     </nav>
   );
-};
-
-export default Nav;
+}

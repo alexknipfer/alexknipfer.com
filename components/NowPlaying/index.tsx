@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 import useNowPlaying from '@/lib/useNowPlaying';
 
-const NowPlaying: React.FC = () => {
+export default function NowPlaying() {
   const { isPlaying, isLoading, data } = useNowPlaying();
 
   if (isLoading) {
@@ -66,6 +66,4 @@ const NowPlaying: React.FC = () => {
       </div>
     </article>
   );
-};
-
-export default NowPlaying;
+}

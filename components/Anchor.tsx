@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { useTheme } from 'next-themes';
+import { PropsWithChildren } from 'react';
 
 interface AnchorProps {
   isExternal?: boolean;
@@ -8,12 +9,12 @@ interface AnchorProps {
 
 type Props = AnchorProps & React.HTMLProps<HTMLAnchorElement>;
 
-const Anchor: React.FC<Props> = ({
+export default function Anchor({
   children,
   isExternal = true,
   hasAnimation = true,
   ...anchorProps
-}) => {
+}: PropsWithChildren<Props>) {
   const { theme } = useTheme();
 
   return (
@@ -44,6 +45,4 @@ const Anchor: React.FC<Props> = ({
       `}</style>
     </a>
   );
-};
-
-export default Anchor;
+}

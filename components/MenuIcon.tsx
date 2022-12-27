@@ -12,17 +12,17 @@ const closedTransformationConfig = {
   bottom: 'translate(5, 32) rotate(-45)',
 };
 
-type TransformationConfig = typeof openedTransformationConfig;
+// type TransformationConfig = typeof openedTransformationConfig;
 
 interface Props {
   isOpen: boolean;
 }
 
-const MenuIcon: React.FC<Props> = ({ isOpen }) => {
+export default function MenuIcon({ isOpen }: Props) {
   const props = useSpring({
     to: isOpen ? closedTransformationConfig : openedTransformationConfig,
     config: config.stiff,
-  }) as TransformationConfig;
+  }) as any;
 
   return (
     <svg
@@ -36,6 +36,4 @@ const MenuIcon: React.FC<Props> = ({ isOpen }) => {
       <animated.rect width="35" height="3" rx="3" transform={props.bottom} />
     </svg>
   );
-};
-
-export default MenuIcon;
+}

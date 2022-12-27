@@ -1,11 +1,16 @@
 import classNames from 'classnames';
+import { PropsWithChildren } from 'react';
 
 interface Props {
   level: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   className?: string;
 }
 
-const Heading: React.FC<Props> = ({ level, children, className }) => {
+export default function Header({
+  level,
+  children,
+  className,
+}: PropsWithChildren<Props>) {
   const Tag = level;
 
   return (
@@ -23,6 +28,4 @@ const Heading: React.FC<Props> = ({ level, children, className }) => {
       {children}
     </Tag>
   );
-};
-
-export default Heading;
+}
