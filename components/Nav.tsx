@@ -36,10 +36,12 @@ export default function Nav() {
         </button>
         <div className="sm:hidden md:block">
           {navItems.map(({ path, name }) => (
-            <Link key={path} href={path}>
-              <a className="hidden md:inline p-4 text-base text-gray-700 dark:text-white">
-                {name}
-              </a>
+            <Link
+              className="hidden md:inline p-4 text-base text-gray-700 dark:text-white"
+              key={path}
+              href={path}
+            >
+              {name}
             </Link>
           ))}
         </div>

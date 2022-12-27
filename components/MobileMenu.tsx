@@ -24,10 +24,11 @@ export default function Menu({ isOpen }: Props) {
             key={navItems[index].path}
             style={{ marginBottom: 27, ...props }}
           >
-            <Link href={navItems[index].path}>
-              <a className="text-3xl text-black dark:text-gray-200 uppercase border-l border-solid border-black dark:border-gray-200 pl-4">
-                {navItems[index].name}
-              </a>
+            <Link
+              className="text-3xl text-black dark:text-gray-200 uppercase border-l border-solid border-black dark:border-gray-200 pl-4"
+              href={navItems[index].path}
+            >
+              {navItems[index].name}
             </Link>
           </animated.div>
         ))}
