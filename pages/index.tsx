@@ -14,21 +14,25 @@ const projects = [
     name: 'Spotify Dashboard',
     link: 'https://spotify-dashboard-alexknipfer.vercel.app',
     img: '/static/images/projects/spotify_project.jpg',
+    gradient: 'from-[#D8B4FE] to-[#818CF8]',
   },
   {
     name: 'Botsai',
     link: 'https://botsai.com',
     img: '/static/images/projects/botsai_project.jpg',
+    gradient: 'from-[#6EE7B7] via-[#3B82F6] to-[#9333EA]',
   },
   {
     name: 'Ascendum',
     link: 'https://ascendum.com',
     img: '/static/images/projects/ascendum_project.jpg',
+    gradient: 'from-[#FDE68A] via-[#FCA5A5] to-[#FECACA]',
   },
   {
     name: 'NPM Slackbot',
     link: 'https://github.com/alexknipfer/npm-bot',
     img: '/static/images/projects/npm_bot_project.jpg',
+    gradient: 'from-[#D8B4FE] to-[#818CF8]',
   },
 ];
 

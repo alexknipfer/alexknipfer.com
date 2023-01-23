@@ -41,7 +41,7 @@ class MyDocument extends Document {
           <meta name="theme-color" content="#ffffff" />
           <meta charSet="utf-8" />
         </Head>
-        <body className="font-sans bg:white dark:bg-gray-900">
+        <body className="font-sans bg:white dark:bg-zinc-900">
           <Main />
           <NextScript />
         </body>

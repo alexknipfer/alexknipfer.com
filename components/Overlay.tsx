@@ -13,7 +13,7 @@ export default function Overlay({
   }
 
   return (
-    <div className="fixed w-full h-screen top-0 left-0 bg-white bg-opacity-95 dark:bg-gray-900 dark:bg-opacity-95 z-30">
+    <div className="fixed w-full h-screen top-0 left-0 bg-white/75 dark:bg-zinc-900/75 backdrop-blur z-30">
       {children}
     </div>
   );
