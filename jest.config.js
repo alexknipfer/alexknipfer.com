@@ -1,4 +1,10 @@
-module.exports = {
+const nextJest = require('next/jest');
+
+const createJestConfig = nextJest({
+  dir: './',
+});
+
+const customJestConfig = {
   setupFiles: [require.resolve('whatwg-fetch')],
   setupFilesAfterEnv: ['<rootDir>/test/setupEnv.ts'],
   testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
@@ -15,3 +21,5 @@ module.exports = {
     '^.+\\.module\\.(css|sass|scss)$',
   ],
 };
+
+module.exports = createJestConfig(customJestConfig);

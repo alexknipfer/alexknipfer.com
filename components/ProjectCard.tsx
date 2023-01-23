@@ -7,14 +7,15 @@ interface Props {
   name: string;
   link: string;
   img: string;
+  gradient: string;
 }
 
-export default function ProjectCard({ name, link, img }: Props) {
+export default function ProjectCard({ name, link, img, gradient }: Props) {
   const { onClose, onOpen, isOpen } = useDisclosure();
 
   return (
     <div
-      className="relative rounded-md shadow-xl"
+      className={`relative rounded-md shadow-xl bg-gradient-to-r p-1 ${gradient}`}
       onMouseEnter={onOpen}
       onMouseLeave={onClose}
     >

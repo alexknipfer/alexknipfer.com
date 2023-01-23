@@ -13,7 +13,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Arimo', ...fontFamily.sans],
+        sans: ['Inter', ...fontFamily.sans],
       },
       fontSize: {
         tiny: '0.6rem',
