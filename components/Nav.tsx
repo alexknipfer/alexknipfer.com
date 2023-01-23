@@ -24,7 +24,7 @@ export default function Nav() {
   const { onToggle, isOpen } = useDisclosure();
 
   return (
-    <nav className="sticky top-0 z-20 max-w-screen-md mb-2 mx-auto px-6 py-2 md:p-6 bg-white dark:bg-gray-900 bg-opacity-60 nav-backdrop">
+    <nav className="sticky top-0 z-20 max-w-screen-md mb-2 mx-auto px-6 py-2 md:p-6 backdrop-blur supports-backdrop-blur:bg-white/95 bg-white/75 dark:bg-zinc-900/75">
       <Menu isOpen={isOpen} />
       <div className="flex justify-between items-center w-full h-16">
         <button
@@ -47,11 +47,6 @@ export default function Nav() {
         </div>
         <ThemeSwitchButton />
       </div>
-      <style jsx>{`
-        .nav-backdrop {
-          backdrop-filter: saturate(180%) blur(20px);
-        }
-      `}</style>
     </nav>
   );
 }
