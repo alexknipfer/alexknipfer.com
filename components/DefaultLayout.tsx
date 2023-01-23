@@ -11,7 +11,7 @@ export default function DefaultLayout({ children }: PropsWithChildren) {
     <Fragment>
       <Navigation />
       <main
-        className={`${interVariable.className} flex justify-center flex-col max-w-screen-md mx-auto px-6 pb-20 md:px-12`}
+        className={`${interVariable.className} flex justify-center flex-col max-w-screen-md mx-auto px-6 pb-20 md:px-6`}
       >
         {children}
       </main>
