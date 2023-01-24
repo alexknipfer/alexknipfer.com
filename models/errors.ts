@@ -1,31 +1,22 @@
+import { APIError } from './APIError';
 import { HttpStatusCode } from './Http';
 
-export type CustomErrors = SpotifyError;
-
-export class SpotifyError extends Error {
-  public source = 'Spotify API Error';
-  public status: HttpStatusCode;
-
-  constructor(message: string, status: HttpStatusCode) {
+export class BadRequestError extends Error implements APIError {
+  constructor(message: string) {
     super(message);
-    this.status = status;
-  }
-}
 
-export class APIError extends Error {
-  public errors: Error[] = [];
-  public status: HttpStatusCode;
-
-  constructor() {
-    super();
+    this.name = 'BadRequestError';
   }
 
-  public addError(error: CustomErrors) {
-    if (!this.status) {
-      this.status = error.status;
-    }
-
-    this.errors.push(error);
-    this.message += `${error.message} \n`;
+  toJSON() {
+    return {
+      statusCode: HttpStatusCode.BAD_REQUEST,
+      errors: [
+        {
+          title: 'Bad Request.',
+          detail: this.message,
+        },
+      ],
+    };
   }
 }
