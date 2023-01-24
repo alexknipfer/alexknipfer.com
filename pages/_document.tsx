@@ -38,7 +38,7 @@ class MyDocument extends Document {
             color="#5bbad5"
           />
           <meta name="msapplication-TileColor" content="#da532c" />
-          <meta name="theme-color" content="#ffffff" />
+          <meta name="theme-color" content="#18181b" />
           <meta charSet="utf-8" />
         </Head>
         <body className="font-sans bg:white dark:bg-zinc-900">
