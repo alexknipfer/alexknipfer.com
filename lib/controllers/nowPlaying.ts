@@ -11,7 +11,8 @@ export const NowPlayingController: ControllerMethods = {
   index: async (_, res) => {
     const response = await spotifyService.getNowPlayingTrack();
 
-    if (response.status === 204 || response.status > 400) {
+    if (!response.ok) {
+      console.error('NOW PLAYING ERROR RESPONSE: ', await response.json());
       throw new BadRequestError('Unable to fetch currently playing track.');
     }
 
