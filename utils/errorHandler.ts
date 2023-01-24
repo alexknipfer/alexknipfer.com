@@ -1,19 +1,21 @@
 import { NextApiResponse } from 'next';
-import { forEach } from 'ramda';
 
-import { APIError, CustomErrors } from '@/models/errors';
+import { BadRequestError } from '@/models/errors';
+import { APIError } from '@/models/APIError';
 
-export const errorHandler = (
-  res: NextApiResponse,
-  errors: CustomErrors | CustomErrors[],
-) => {
-  const apiError = new APIError();
+function isAPIError(error: unknown | APIError): error is APIError {
+  return (error as APIError).toJSON !== undefined;
+}
 
-  if (errors instanceof Array) {
-    forEach((e) => apiError.addError(e), errors);
-  } else {
-    apiError.addError(errors);
-  }
+export function errorHandler(res: NextApiResponse, error: unknown) {
+  const json = isAPIError(error)
+    ? error.toJSON()
+    : new BadRequestError('An unknown error has occured').toJSON();
 
-  return res.status(apiError.status).json(apiError);
-};
+  console.error('API ERROR RESPONSE: ', json);
+
+  return res.status(json.statusCode).json({
+    status: json.statusCode,
+    errors: json.errors,
+  });
+}
