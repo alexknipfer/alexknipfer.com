@@ -15,7 +15,7 @@ export default function ProjectCard({ name, link, img, gradient }: Props) {
 
   return (
     <div
-      className={`relative rounded-md shadow-xl bg-gradient-to-r p-1 ${gradient}`}
+      className={`relative max-w-max rounded-md shadow-xl bg-gradient-to-r p-1 ${gradient}`}
       onMouseEnter={onOpen}
       onMouseLeave={onClose}
     >
