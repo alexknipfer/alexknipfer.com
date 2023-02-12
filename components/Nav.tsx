@@ -41,7 +41,7 @@ export default function Nav() {
           {navItems.map(({ path, name }) => (
             <Link
               className={classNames(
-                'hidden md:inline mr-8 decoration-8 text-base text-gray-700 dark:text-white',
+                'hidden md:inline mr-8 text-base text-gray-700 dark:text-white',
                 {
                   'underline underline-offset-8 decoration-1 decoration-dotted':
                     router.asPath === path,
