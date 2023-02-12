@@ -15,7 +15,4 @@ export const appConfig = {
     clientSecret: loadEnvironmentVariable('SPOTIFY_CLIENT_SECRET'),
     refreshToken: loadEnvironmentVariable('SPOTIFY_REFRESH_TOKEN'),
   },
-  google: {
-    analytics: loadEnvironmentVariable('NEXT_PUBLIC_GOOGLE_ANALYTICS'),
-  },
 };

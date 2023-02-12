@@ -19,6 +19,7 @@ specifiers:
   '@types/testing-library__jest-dom': ^5.14.5
   '@typescript-eslint/eslint-plugin': ^5.49.0
   '@typescript-eslint/parser': ^5.49.0
+  '@vercel/analytics': ^0.1.8
   autoprefixer: ^10.4.13
   babel-jest: ^29.3.1
   classnames: ^2.3.2
@@ -51,6 +52,7 @@ specifiers:
 
 dependencies:
   '@next/font': 13.1.4
+  '@vercel/analytics': 0.1.8_react@18.2.0
   autoprefixer: 10.4.13_postcss@8.4.21
   classnames: 2.3.2
   next: 13.1.4_pjwopsidmaokadturxaafygjp4
@@ -2523,6 +2525,14 @@ packages:
       '@typescript-eslint/types': 5.49.0
       eslint-visitor-keys: 3.3.0
     dev: true
+
+  /@vercel/analytics/0.1.8_react@18.2.0:
+    resolution: {integrity: sha512-PQrOI8BJ9qUiVJuQfnKiJd15eDjDJH9TBKsNeMrtelT4NAk7d9mBVz1CoZkvoFnHQ0OW7Xnqmr1F2nScfAnznQ==}
+    peerDependencies:
+      react: ^16.8||^17||^18
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /@xmldom/xmldom/0.8.6:
     resolution: {integrity: sha512-uRjjusqpoqfmRkTaNuLJ2VohVr67Q5YwDATW3VU7PfzTj6IRaihGrYI7zckGZjxQPBIp63nfvJbM+Yu5ICh0Bg==}
