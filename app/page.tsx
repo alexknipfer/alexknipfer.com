@@ -1,10 +1,9 @@
 import { NextPage } from 'next';
 import Image from 'next/image';
+import { Fragment } from 'react';
 
 import GitHubIcon from '../public/static/icons/github.svg';
 
-import DefaultLayout from '@/components/DefaultLayout';
-import Meta from '@/components/Meta';
 import Heading from '@/components/Heading';
 import ProjectCard from '@/components/ProjectCard';
 import TechnicalSkills from '@/components/TechnicalSkills';
@@ -38,8 +37,7 @@ const projects = [
 
 const Home: NextPage = () => {
   return (
-    <DefaultLayout>
-      <Meta />
+    <Fragment>
       <section className="mb-10 flex flex-col-reverse md:flex-row md:justify-between md:items-center">
         <div>
           <h1 className="font-bold text-black dark:text-white text-3xl md:text-4xl mb-1">
@@ -92,7 +90,7 @@ const Home: NextPage = () => {
         </p>
         <TechnicalSkills />
       </section>
-    </DefaultLayout>
+    </Fragment>
   );
 };
 

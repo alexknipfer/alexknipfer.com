@@ -1,3 +1,5 @@
+'use client';
+
 import useSWR from 'swr';
 
 import { NowPlayingResponse } from '../pages/api/now-playing';

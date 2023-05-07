@@ -1,5 +1,7 @@
+'use client';
+
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import classNames from 'classnames';
 
 import ThemeSwitchButton from '@/components/ThemeSwitchButton';
@@ -24,7 +26,7 @@ export const navItems = [
 
 export default function Nav() {
   const { onToggle, isOpen } = useDisclosure();
-  const router = useRouter();
+  const currentPathname = usePathname();
 
   return (
     <nav className="sticky top-0 z-20 max-w-screen-md mb-2 mx-auto px-6 py-2 md:p-6 backdrop-blur supports-backdrop-blur:bg-white/95 bg-white/75 dark:bg-zinc-900/75">
@@ -44,7 +46,7 @@ export default function Nav() {
                 'hidden md:inline mr-8 text-base text-gray-700 dark:text-white',
                 {
                   'underline underline-offset-8 decoration-1 decoration-dotted':
-                    router.asPath === path,
+                    currentPathname === path,
                 },
               )}
               key={path}
