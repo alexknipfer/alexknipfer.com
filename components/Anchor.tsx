@@ -1,3 +1,5 @@
+'use client';
+
 import classNames from 'classnames';
 import { useTheme } from 'next-themes';
 import { PropsWithChildren } from 'react';
