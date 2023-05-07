@@ -1,8 +1,6 @@
-import { NextPage } from 'next';
+import { Fragment } from 'react';
 
-import DefaultLayout from '@/components/DefaultLayout';
 import Heading from '@/components/Heading';
-import Meta from '@/components/Meta';
 import ExperienceDetails from '@/components/ExperienceDetails';
 
 const jobItems = [
@@ -44,10 +42,9 @@ const educationDetails = {
   ],
 };
 
-const Experience: NextPage = () => {
+export default function Experience() {
   return (
-    <DefaultLayout>
-      <Meta />
+    <Fragment>
       <Heading level="h1">Experience</Heading>
       <p className="text-gray-700 dark:text-gray-300 mb-10">
         Curious to hear more about my experience? You&apos;re in the right
@@ -71,8 +68,6 @@ const Experience: NextPage = () => {
         </Heading>
         <ExperienceDetails {...educationDetails} />
       </section>
-    </DefaultLayout>
+    </Fragment>
   );
-};
-
-export default Experience;
+}

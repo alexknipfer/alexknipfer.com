@@ -1,7 +1,5 @@
-import { NextPage } from 'next';
+import { Fragment } from 'react';
 
-import DefaultLayout from '@/components/DefaultLayout';
-import Meta from '@/components/Meta';
 import Heading from '@/components/Heading';
 import TimelineStep from '@/components/TimelineStep';
 
@@ -152,10 +150,9 @@ const timelineListItems: TimelineList[] = [
   },
 ];
 
-const Timeline: NextPage = () => {
+export default function Timeline() {
   return (
-    <DefaultLayout>
-      <Meta />
+    <Fragment>
       <section>
         <Heading level="h1">Timeline</Heading>
         {timelineListItems.map(({ year, timelineItems }) => (
@@ -174,8 +171,6 @@ const Timeline: NextPage = () => {
           </div>
         ))}
       </section>
-    </DefaultLayout>
+    </Fragment>
   );
-};
-
-export default Timeline;
+}
