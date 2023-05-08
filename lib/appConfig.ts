@@ -6,7 +6,7 @@ const loadEnvironmentVariable = (key: string): string => {
     throw new Error(`Must configure ${key} environment variable.`);
   }
 
-  return envVariable;
+  return envVariable as string;
 };
 
 export const appConfig = {
