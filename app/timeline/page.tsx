@@ -1,7 +1,12 @@
 import { Fragment } from 'react';
+import { Metadata } from 'next';
 
 import Heading from '@/components/Heading';
 import TimelineStep from '@/components/TimelineStep';
+
+export const metadata: Metadata = {
+  title: 'Timeline',
+};
 
 interface TimelineList {
   year: number;

@@ -1,7 +1,12 @@
 import { Fragment } from 'react';
+import { Metadata } from 'next';
 
 import Heading from '@/components/Heading';
 import ExperienceDetails from '@/components/ExperienceDetails';
+
+export const metadata: Metadata = {
+  title: 'Experience',
+};
 
 const jobItems = [
   {

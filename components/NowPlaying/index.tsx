@@ -1,35 +1,20 @@
-'use client';
-
 import Image from 'next/image';
 
-import useNowPlaying from '@/lib/useNowPlaying';
+import { spotifyService } from '../../lib/spotifyService';
 
-export default function NowPlaying() {
-  const { isPlaying, isLoading, data } = useNowPlaying();
-
-  if (isLoading) {
-    return (
-      <div className="relative animate-pulse border border-card-border rounded-md flex items-center w-64 p-3 shadow">
-        <div className="bg-gray-200 dark:bg-gray-600 h-14 w-14 rounded mr-4"></div>
-        <div className="bg-gray-200 dark:bg-gray-600 absolute top-2 right-2 h-3.5 w-3.5 rounded-full"></div>
-        <div className="w-3/4">
-          <div className="h-4 w-2/5 bg-gray-200 dark:bg-gray-600 mb-2"></div>
-          <div className="h-4 w-3/4 bg-gray-200 dark:bg-gray-600"></div>
-        </div>
-      </div>
-    );
-  }
+export default async function NowPlaying() {
+  const nowPlayingTrack = await spotifyService.getNowPlayingTrack();
 
   return (
     <article className="relative border border-card-border rounded-md flex items-center w-64 p-3 shadow">
       <div className="flex justify-center items-center h-14">
-        {isPlaying ? (
+        {nowPlayingTrack ? (
           <Image
-            src={data.attributes.albumImage}
+            src={nowPlayingTrack.albumImage}
             width={55}
             height={55}
             className="rounded block"
-            alt={`Spotify album cover for ${data.attributes.artists}`}
+            alt={`Spotify album cover for ${nowPlayingTrack.artists}`}
           />
         ) : (
           <Image
@@ -40,7 +25,7 @@ export default function NowPlaying() {
           />
         )}
       </div>
-      {isPlaying && (
+      {nowPlayingTrack ? (
         <img
           src="/static/images/spotify.png"
           width={15}
@@ -48,24 +33,37 @@ export default function NowPlaying() {
           className="absolute top-2 right-2"
           alt="Spotify music logo"
         />
-      )}
+      ) : null}
       <div className="w-3/4 pl-4 text-gray-700 dark:text-gray-400">
-        {isPlaying ? (
+        {nowPlayingTrack ? (
           <a
-            href={data.attributes.songUrl}
+            href={nowPlayingTrack.songUrl}
             target="_blank"
             rel="noreferrer"
             className="font-bold truncate block hover:underline text-sm"
           >
-            {data.attributes.songName}
+            {nowPlayingTrack.songName}
           </a>
         ) : (
           'Spotify'
         )}
         <div className="truncate text-gray-700 dark:text-gray-400">
-          {isPlaying ? data.attributes.artists : 'Not currently playing'}
+          {nowPlayingTrack ? nowPlayingTrack.artists : 'Not currently playing'}
         </div>
       </div>
     </article>
+  );
+}
+
+export function NowPlayingSkeleton() {
+  return (
+    <div className="relative animate-pulse border border-card-border rounded-md flex items-center w-64 p-3 shadow">
+      <div className="bg-gray-200 dark:bg-gray-600 h-14 w-14 rounded mr-4"></div>
+      <div className="bg-gray-200 dark:bg-gray-600 absolute top-2 right-2 h-3.5 w-3.5 rounded-full"></div>
+      <div className="w-3/4">
+        <div className="h-4 w-2/5 bg-gray-200 dark:bg-gray-600 mb-2"></div>
+        <div className="h-4 w-3/4 bg-gray-200 dark:bg-gray-600"></div>
+      </div>
+    </div>
   );
 }

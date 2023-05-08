@@ -1,13 +1,55 @@
 import './global.css';
 import { PropsWithChildren } from 'react';
 import { Inter } from 'next/font/google';
+import { Metadata } from 'next';
 
 const interVariable = Inter({ subsets: ['latin'] });
 
 import Navigation from '@/components/Nav';
 import Footer from '@/components/Footer';
 
-export default function Layout({ children }: PropsWithChildren) {
+export const metadata: Metadata = {
+  title: {
+    default: 'Alexander Knipfer',
+    template: '%s | Alexander Knipfer',
+  },
+  description: 'Full stack developer, chess player, and disc golfer.',
+  openGraph: {
+    title: 'Alexander Knipfer',
+    description: 'Full stack developer, chess player, and disc golfer.',
+    url: 'https://alexknipfer.com',
+    siteName: 'Alexander Knipfer',
+    images: [
+      {
+        url: 'https://alexknipfer.com/static/images/banner.jpg',
+        width: 1920,
+        height: 1080,
+      },
+    ],
+    locale: 'en-US',
+    type: 'website',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  twitter: {
+    title: 'Alexander Knipfer',
+    card: 'summary_large_image',
+  },
+  icons: {
+    shortcut: '/favicon.ico',
+  },
+};
+
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html
       lang="en"
