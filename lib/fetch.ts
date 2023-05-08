@@ -14,7 +14,7 @@ export class Fetch {
   public async get<Result>(url: string, headers?: Headers): Promise<Result> {
     const response = await fetch(url, {
       next: this.config.nextConfig,
-      cache: 'no-store',
+      cache: this.config.cache,
       headers,
     });
 
