@@ -1,12 +1,8 @@
 const { fontFamily } = require('tailwindcss/defaultTheme');
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './app/**/*.{ts,tsx}',
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
-  ],
-  darkMode: 'class',
+  content: ['./app/**/*.{ts,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   variants: {
     margin: ['responsive', 'last'],
     borderWidth: ['last'],

@@ -9,7 +9,10 @@ import Footer from '@/components/Footer';
 
 export default function Layout({ children }: PropsWithChildren) {
   return (
-    <html lang="en" className={interVariable.className}>
+    <html
+      lang="en"
+      className={`${interVariable.className} bg-white dark:bg-zinc-900`}
+    >
       <body>
         <Navigation />
         <main className="flex justify-center flex-col max-w-screen-md mx-auto px-6 pb-20 md:px-6">

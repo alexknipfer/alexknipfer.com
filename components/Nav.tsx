@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import classNames from 'classnames';
 
-import ThemeSwitchButton from '@/components/ThemeSwitchButton';
 import useDisclosure from '@/lib/useDisclosure';
 import MenuIcon from '@/components/MenuIcon';
 import Menu from '@/components/MobileMenu';
@@ -56,7 +55,6 @@ export default function Nav() {
             </Link>
           ))}
         </div>
-        <ThemeSwitchButton />
       </div>
     </nav>
   );

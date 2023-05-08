@@ -1,8 +1,9 @@
 'use client';
 
 import classNames from 'classnames';
-import { useTheme } from 'next-themes';
 import { PropsWithChildren } from 'react';
+
+import useDarkMode from '@/lib/useDarkMode';
 
 interface AnchorProps {
   isExternal?: boolean;
@@ -17,7 +18,7 @@ export default function Anchor({
   hasAnimation = true,
   ...anchorProps
 }: PropsWithChildren<Props>) {
-  const { theme } = useTheme();
+  const isDarkMode = useDarkMode();
 
   return (
     <a
@@ -32,7 +33,7 @@ export default function Anchor({
       <style jsx>{`
         .link-animation:after {
           border-radius: 1px;
-          border-top: 1px solid ${theme === 'dark' ? '#60A5FA' : '#1d4ed8'};
+          border-top: 1px solid ${isDarkMode ? '#60A5FA' : '#1d4ed8'};
           content: '';
           position: absolute;
           right: 100%;
