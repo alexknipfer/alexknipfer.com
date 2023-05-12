@@ -7,6 +7,7 @@ const interVariable = Inter({ subsets: ['latin'] });
 
 import Navigation from '@/components/Nav';
 import Footer from '@/components/Footer';
+import { Providers } from './providers';
 
 export const metadata: Metadata = {
   title: {
@@ -55,13 +56,15 @@ export default function RootLayout({ children }: PropsWithChildren) {
       lang="en"
       className={`${interVariable.className} bg-white dark:bg-zinc-900`}
     >
-      <body>
-        <Navigation />
-        <main className="flex justify-center flex-col max-w-screen-md mx-auto px-6 pb-20 md:px-6">
-          {children}
-        </main>
-        <Footer />
-      </body>
+      <Providers>
+        <body>
+          <Navigation />
+          <main className="flex justify-center flex-col max-w-screen-md mx-auto px-6 pb-20 md:px-6">
+            {children}
+          </main>
+          <Footer />
+        </body>
+      </Providers>
     </html>
   );
 }
