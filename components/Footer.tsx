@@ -1,12 +1,10 @@
-import { Suspense } from 'react';
-
 import LinkedInIcon from '../public/static/icons/linkedin.svg';
 import TwitterIcon from '../public/static/icons/twitter.svg';
 import GithubIcon from '../public/static/icons/github.svg';
 import InstagramIcon from '../public/static/icons/instagram.svg';
 import EmailIcon from '../public/static/icons/email.svg';
 
-import NowPlaying, { NowPlayingSkeleton } from '@/components/NowPlaying';
+import NowPlaying from '@/components/NowPlaying';
 
 const socialAccounts = [
   {
@@ -39,10 +37,7 @@ const socialAccounts = [
 export default function Footer() {
   return (
     <footer className="flex flex-col items-center py-6">
-      <Suspense fallback={<NowPlayingSkeleton />}>
-        {/* @ts-expect-error Async Server Component */}
-        <NowPlaying />
-      </Suspense>
+      <NowPlaying />
       <div className="flex justify-around mt-4 w-64">
         {socialAccounts.map(({ link, icon, label }) => {
           const Icon = icon;

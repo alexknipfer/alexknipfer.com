@@ -28,6 +28,7 @@ export class Fetch {
   ): Promise<Result> {
     const response = await fetch(url, {
       method: 'POST',
+      cache: 'no-store',
       headers,
       body,
     });

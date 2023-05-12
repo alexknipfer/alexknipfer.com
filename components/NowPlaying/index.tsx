@@ -1,9 +1,26 @@
+'use client';
+
 import Image from 'next/image';
+import useSWR from 'swr';
 
-import { spotifyService } from '../../lib/spotifyService';
+interface NowPlayingResponse {
+  artists: string;
+  songName: string;
+  album: string;
+  albumImage: string;
+  songUrl: string;
+}
 
-export default async function NowPlaying() {
-  const nowPlayingTrack = await spotifyService.getNowPlayingTrack();
+export default function NowPlaying() {
+  const { data: nowPlayingTrack, isLoading } = useSWR<NowPlayingResponse>(
+    '/api/now-playing',
+    null,
+    { refreshInterval: 5000 },
+  );
+
+  if (!nowPlayingTrack || isLoading) {
+    return <NowPlayingSkeleton />;
+  }
 
   return (
     <article className="relative border border-card-border rounded-md flex items-center w-64 p-3 shadow">

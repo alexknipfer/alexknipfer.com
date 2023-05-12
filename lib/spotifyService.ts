@@ -19,32 +19,26 @@ class SpotifyService {
   public async getNowPlayingTrack() {
     const { access_token } = await this.getAccessToken();
 
-    try {
-      const response = await this.fetch.get<SpotifyNowPlayingResponse>(
-        SpotifyService.NOW_PLAYING_ENDPOINT,
-        new Headers({
-          Authorization: `Bearer ${access_token}`,
-        }),
-      );
+    const response = await this.fetch.get<SpotifyNowPlayingResponse>(
+      SpotifyService.NOW_PLAYING_ENDPOINT,
+      new Headers({
+        Authorization: `Bearer ${access_token}`,
+      }),
+    );
 
-      if (!response.is_playing) {
-        return null;
-      }
-
-      const trackDetails = response.item;
-
-      return {
-        artists: trackDetails.artists.map((a) => a.name).join(', '),
-        songName: trackDetails.name,
-        album: trackDetails.album.name,
-        albumImage: trackDetails.album.images[0].url,
-        songUrl: trackDetails.external_urls.spotify,
-      };
-    } catch (error) {
-      console.error(error);
-
+    if (!response.is_playing) {
       return null;
     }
+
+    const trackDetails = response.item;
+
+    return {
+      artists: trackDetails.artists.map((a) => a.name).join(', '),
+      songName: trackDetails.name,
+      album: trackDetails.album.name,
+      albumImage: trackDetails.album.images[0].url,
+      songUrl: trackDetails.external_urls.spotify,
+    };
   }
 
   private async getAccessToken(): Promise<SpotifyTokenResponse> {
@@ -59,20 +53,6 @@ class SpotifyService {
         refresh_token: appConfig.spotify.refreshToken,
       }),
     );
-
-    // const response = await fetch(SpotifyService.TOKEN_ENDPOINT, {
-    //   method: 'POST',
-    //   headers: {
-    //     Authorization: `Basic ${this.getAuthToken()}`,
-    //     'Content-Type': 'application/x-www-form-urlencoded',
-    //   },
-    //   body: new URLSearchParams({
-    //     grant_type: 'refresh_token',
-    //     refresh_token: appConfig.spotify.refreshToken,
-    //   }),
-    // });
-
-    // return response.json();
   }
 
   private getAuthToken() {
