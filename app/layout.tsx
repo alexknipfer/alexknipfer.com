@@ -5,9 +5,10 @@ import { Metadata } from 'next';
 
 const interVariable = Inter({ subsets: ['latin'] });
 
+import { Providers } from './providers';
+
 import Navigation from '@/components/Nav';
 import Footer from '@/components/Footer';
-import { Providers } from './providers';
 
 export const metadata: Metadata = {
   title: {
