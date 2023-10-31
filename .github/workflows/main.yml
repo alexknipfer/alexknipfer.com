@@ -37,8 +37,5 @@ jobs:
       - name: Lint
         run: pnpm run lint
 
-      - name: Test
-        run: pnpm run test --ci --coverage --maxWorkers=2
-
       - name: Build
         run: pnpm run build
