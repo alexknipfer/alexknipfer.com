@@ -11,6 +11,7 @@ import Navigation from '@/components/Nav';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://alexknipfer.com'),
   title: {
     default: 'Alexander Knipfer',
     template: '%s | Alexander Knipfer',
