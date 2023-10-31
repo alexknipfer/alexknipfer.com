@@ -11,6 +11,9 @@ class SpotifyService {
     'https://accounts.spotify.com/api/token';
   private static readonly NOW_PLAYING_ENDPOINT =
     'https://api.spotify.com/v1/me/player/currently-playing';
+  private static readonly AUTH_TOKEN = Buffer.from(
+    `${appConfig.spotify.clientId}:${appConfig.spotify.clientSecret}`,
+  ).toString('base64');
 
   constructor() {
     this.fetch = new Fetch();
@@ -45,7 +48,7 @@ class SpotifyService {
     return this.fetch.post(
       SpotifyService.TOKEN_ENDPOINT,
       new Headers({
-        Authorization: `Basic ${this.getAuthToken()}`,
+        Authorization: `Basic ${SpotifyService.AUTH_TOKEN}`,
         'Content-Type': 'application/x-www-form-urlencoded',
       }),
       new URLSearchParams({
@@ -53,12 +56,6 @@ class SpotifyService {
         refresh_token: appConfig.spotify.refreshToken,
       }),
     );
-  }
-
-  private getAuthToken() {
-    return Buffer.from(
-      `${appConfig.spotify.clientId}:${appConfig.spotify.clientSecret}`,
-    ).toString('base64');
   }
 }
 
