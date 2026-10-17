@@ -2,6 +2,7 @@
   "name": "alexknipfer.comv2",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@12.11.2",
   "imports": {
     "#/*": "./src/*"
   },
