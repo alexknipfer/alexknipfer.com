@@ -2,6 +2,7 @@
   "name": "alexknipfer.comv2",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@12.11.2",
   "imports": {
     "#/*": "./src/*"
   },
@@ -21,7 +22,8 @@
   "dependencies": {
     "@fontsource/monaspace-krypton": "^5.3.0",
     "@fontsource/monaspace-neon": "^5.3.0",
-    "@tailwindcss/vite": "^4.1.18",
+    "@t3-oss/env-core": "^0.13.11",
+    "@tailwindcss/vite": "^4.3.3",
     "@tanstack/react-devtools": "0.10.13",
     "@tanstack/react-query": "^5.104.3",
     "@tanstack/react-query-devtools": "^5.104.3",
@@ -31,22 +33,23 @@
     "@tanstack/react-start": "1.169.3",
     "@vercel/analytics": "^2.0.1",
     "clsx": "^2.1.1",
-    "nitro": "3.0.260610-beta",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "tailwindcss": "^4.1.18"
+    "nitro": "3.0.260903-beta",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "tailwindcss": "^4.3.3",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.5",
+    "@biomejs/biome": "2.5.15",
     "@tanstack/devtools-vite": "0.8.5",
     "@tanstack/intent": "^0.5.5",
-    "@tanstack/router-cli": "^1.132.0",
-    "@types/node": "^22.10.2",
-    "@types/react": "^19.2.0",
-    "@types/react-dom": "^19.2.0",
-    "@vitejs/plugin-react": "^6.0.1",
-    "typescript": "^6.0.2",
-    "vite": "^8.0.0",
+    "@tanstack/router-cli": "^1.167.45",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4",
     "vite-plugin-svgr": "^5.2.0",
     "vitest": "^5.0.5"
   },

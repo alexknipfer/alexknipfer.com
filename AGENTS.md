@@ -59,11 +59,14 @@ src/
     index.tsx            /            (legacy pages/index.tsx)
     timeline.tsx         /timeline    (legacy pages/timeline.tsx)
     experience.tsx       /experience  (legacy pages/experience.tsx)
-    api/now-playing.ts   GET /api/now-playing (server route; legacy HTTP contract kept)
     sitemap[.]xml.ts     GET /sitemap.xml (replaces postbuild generate-sitemap script)
   components/            ported UI components (+ NowPlaying/)
   lib/                   theme (next-themes replacement), seo(), site config/nav, useDisclosure
-  server/                Spotify service (*.server.ts), serializer, server fn (*.functions.ts), types
+    middleware.ts        server fn middleware (spotifyClientMiddleware → context.spotifyClient)
+    spotify-auth.server.ts  refresh-token → access-token exchange
+    spotify/             Spotify API client (spotify.server.ts), server fns (spotify.functions.ts)
+  env/env.server.ts      validated server env (`env`, @t3-oss/env-core + zod)
+  types/spotify.ts       Spotify Web API types
   assets/icons/          SVGs imported as components: `import X from "#/assets/icons/x.svg?react"`
 public/static/           favicons + images (same URLs as legacy)
 ```
@@ -75,8 +78,10 @@ Imports use `#/*` → `src/*` (package.json `imports`).
 Always fetch through TanStack Query. Never fetch manually in `useEffect` (no
 `useEffect` + `useState` loading/error plumbing, no hand-rolled focus/refetch listeners).
 
-- Server logic lives in a `createServerFn` (`src/server/*.functions.ts`); call it from a
-  `queryFn`.
+- Server logic lives in a `createServerFn` (`src/lib/**/*.functions.ts`); call it from a
+  `queryFn`. Spotify server fns get an authorized client via
+  `.middleware([spotifyClientMiddleware])` and use `context.spotifyClient`; add new
+  Spotify endpoints as methods on `createSpotifyApiClient()`.
 - Define a `queryOptions(...)` object (key + `queryFn` + options) next to the hook that uses
   it and export it, e.g. `nowPlayingQueryOptions` in
   `src/components/NowPlaying/useNowPlaying.ts`. Reuse that object everywhere; don't
@@ -92,7 +97,8 @@ Always fetch through TanStack Query. Never fetch manually in `useEffect` (no
 
 ## Environment variables
 
-Server-only (never prefix with `VITE_`), read per request inside server code:
+Server-only (never prefix with `VITE_`), declared and validated in `src/env/env.server.ts`;
+import `env` from `#/env/env.server` instead of reading `process.env` directly:
 
 | Var                     | Purpose                                         |
 | ----------------------- | ----------------------------------------------- |
@@ -100,8 +106,8 @@ Server-only (never prefix with `VITE_`), read per request inside server code:
 | `SPOTIFY_CLIENT_SECRET` | Spotify app client secret                       |
 | `SPOTIFY_REFRESH_TOKEN` | Refresh token for the "currently playing" scope |
 
-Without them the site still works; the footer widget shows "Not currently playing"
-and `/api/now-playing` returns 400 (same as legacy). Legacy CI also defined
+Without them the site still works; the footer widget shows "Not currently playing".
+Legacy CI also defined
 `NEXT_PUBLIC_GOOGLE_ANALYTICS`, but no code used it — dropped.
 
 ## Deployment

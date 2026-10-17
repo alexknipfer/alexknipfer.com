@@ -13,7 +13,6 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ExperienceRouteImport } from './routes/experience'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TimelineRouteImport } from './routes/timeline'
-import { Route as ApiNowPlayingRouteImport } from './routes/api/now-playing'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -35,25 +34,18 @@ const TimelineRoute = TimelineRouteImport.update({
   path: '/timeline',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiNowPlayingRoute = ApiNowPlayingRouteImport.update({
-  id: '/api/now-playing',
-  path: '/api/now-playing',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/experience': typeof ExperienceRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/timeline': typeof TimelineRoute
-  '/api/now-playing': typeof ApiNowPlayingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/experience': typeof ExperienceRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/timeline': typeof TimelineRoute
-  '/api/now-playing': typeof ApiNowPlayingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -61,21 +53,13 @@ export interface FileRoutesById {
   '/experience': typeof ExperienceRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/timeline': typeof TimelineRoute
-  '/api/now-playing': typeof ApiNowPlayingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    '/' | '/experience' | '/sitemap.xml' | '/timeline' | '/api/now-playing'
+  fullPaths: '/' | '/experience' | '/sitemap.xml' | '/timeline'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/experience' | '/sitemap.xml' | '/timeline' | '/api/now-playing'
-  id:
-    | '__root__'
-    | '/'
-    | '/experience'
-    | '/sitemap.xml'
-    | '/timeline'
-    | '/api/now-playing'
+  to: '/' | '/experience' | '/sitemap.xml' | '/timeline'
+  id: '__root__' | '/' | '/experience' | '/sitemap.xml' | '/timeline'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -83,7 +67,6 @@ export interface RootRouteChildren {
   ExperienceRoute: typeof ExperienceRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TimelineRoute: typeof TimelineRoute
-  ApiNowPlayingRoute: typeof ApiNowPlayingRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -116,13 +99,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TimelineRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/now-playing': {
-      id: '/api/now-playing'
-      path: '/api/now-playing'
-      fullPath: '/api/now-playing'
-      preLoaderRoute: typeof ApiNowPlayingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
@@ -131,7 +107,6 @@ const rootRouteChildren: RootRouteChildren = {
   ExperienceRoute: ExperienceRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TimelineRoute: TimelineRoute,
-  ApiNowPlayingRoute: ApiNowPlayingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

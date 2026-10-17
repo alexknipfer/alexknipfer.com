@@ -1,17 +1,15 @@
 import { queryOptions, useQuery } from "@tanstack/react-query";
 
-import { fetchNowPlaying } from "#/server/nowPlaying.functions";
+import { getNowPlaying } from "#/lib/spotify/spotify.functions";
 
 export const nowPlayingQueryOptions = queryOptions({
 	queryKey: ["now-playing"],
-	queryFn: () => fetchNowPlaying(),
+	queryFn: () => getNowPlaying(),
 	retry: false,
 });
 
 export function useNowPlaying() {
 	const { data, isPending } = useQuery(nowPlayingQueryOptions);
 
-	const isPlaying = Boolean(data?.attributes.isPlaying);
-
-	return { data, isLoading: isPending, isPlaying };
+	return { track: data ?? null, isLoading: isPending };
 }
