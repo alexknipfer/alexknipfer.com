@@ -1,14 +1,12 @@
 import clsx from "clsx";
 
 interface Props {
-	/** Rendered `repeat` times; copies after the first are hidden from assistive tech. */
 	children: (copyIndex: number) => React.ReactNode;
 	repeat?: number;
 	className?: string;
 }
 
-/** Infinite horizontal scroller with faded edges; pauses on hover. */
-export default function Marquee({ children, repeat = 4, className }: Props) {
+export function Marquee({ children, repeat = 4, className }: Props) {
 	return (
 		<div
 			className={clsx(

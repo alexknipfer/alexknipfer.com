@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { navItems, SITE_URL } from "#/lib/site";
 
-// Replaces legacy scripts/generate-sitemap.mjs (postbuild static file).
 export const Route = createFileRoute("/sitemap.xml")({
 	server: {
 		handlers: {

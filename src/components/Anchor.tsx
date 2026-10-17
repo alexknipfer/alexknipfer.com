@@ -5,7 +5,7 @@ interface Props extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
 	hasAnimation?: boolean;
 }
 
-export default function Anchor({
+export function Anchor({
 	children,
 	isExternal = true,
 	hasAnimation = true,

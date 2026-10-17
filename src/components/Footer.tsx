@@ -3,7 +3,7 @@ import GithubIcon from "#/assets/icons/github.svg?react";
 import InstagramIcon from "#/assets/icons/instagram.svg?react";
 import LinkedInIcon from "#/assets/icons/linkedin.svg?react";
 import TwitterIcon from "#/assets/icons/twitter.svg?react";
-import NowPlaying from "#/components/NowPlaying";
+import { NowPlaying } from "#/components/NowPlaying";
 
 const socialAccounts = [
 	{
@@ -33,7 +33,7 @@ const socialAccounts = [
 	},
 ];
 
-export default function Footer() {
+export function Footer() {
 	return (
 		<footer className="-mx-4 flex flex-col items-center gap-4 border-t border-line px-4 py-8 sm:-mx-6 sm:px-6 lg:-mx-8 lg:flex-row lg:justify-between lg:px-8 lg:py-4">
 			<NowPlaying />

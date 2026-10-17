@@ -8,7 +8,7 @@ export const nowPlayingQueryOptions = queryOptions({
 	retry: false,
 });
 
-export default function useNowPlaying() {
+export function useNowPlaying() {
 	const { data, isPending } = useQuery(nowPlayingQueryOptions);
 
 	const isPlaying = Boolean(data?.attributes.isPlaying);

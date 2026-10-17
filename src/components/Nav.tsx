@@ -2,10 +2,10 @@ import { Link } from "@tanstack/react-router";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 
-import MenuIcon from "#/components/MenuIcon";
-import ThemeSwitchButton from "#/components/ThemeSwitchButton";
+import { MenuIcon } from "#/components/MenuIcon";
+import { ThemeSwitchButton } from "#/components/ThemeSwitchButton";
 import { navItems } from "#/lib/site";
-import useDisclosure from "#/lib/useDisclosure";
+import { useDisclosure } from "#/lib/useDisclosure";
 
 const SCROLL_THRESHOLD = 20;
 
@@ -36,10 +36,9 @@ function Logo() {
 	);
 }
 
-export default function Nav() {
+export function Nav() {
 	const scrollY = useScrollY();
 	const isScrolled = scrollY > SCROLL_THRESHOLD;
-	// Floats 8px down at the top of the page, docks to the edge as you scroll.
 	const offset =
 		scrollY >= SCROLL_THRESHOLD ? 0 : 8 * (1 - scrollY / SCROLL_THRESHOLD);
 

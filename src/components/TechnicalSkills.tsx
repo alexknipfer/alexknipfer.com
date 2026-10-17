@@ -4,8 +4,8 @@ import JavaScriptIcon from "#/assets/icons/javascript.svg?react";
 import NextIcon from "#/assets/icons/nextjs.svg?react";
 import NodeIcon from "#/assets/icons/nodejs.svg?react";
 import ReactIcon from "#/assets/icons/react.svg?react";
-import DividerRow from "#/components/DividerRow";
-import Reveal from "#/components/Reveal";
+import { DividerRow } from "#/components/DividerRow";
+import { Reveal } from "#/components/Reveal";
 
 const technicalSkills = [
 	{ name: "TypeScript & JavaScript", icon: JavaScriptIcon },
@@ -16,7 +16,7 @@ const technicalSkills = [
 	{ name: "GraphQL", icon: GraphQLIcon },
 ];
 
-export default function TechnicalSkills() {
+export function TechnicalSkills() {
 	return (
 		<ul className="flex flex-col gap-2">
 			{technicalSkills.map(({ icon: Icon, name }, index) => (

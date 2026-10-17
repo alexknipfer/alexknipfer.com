@@ -1,10 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import ExperienceDetails, {
+import {
+	ExperienceDetails,
 	type ExperienceDetailsProps,
 } from "#/components/ExperienceDetails";
-import PageHeader from "#/components/PageHeader";
-import SectionHeader from "#/components/SectionHeader";
+import { PageHeader } from "#/components/PageHeader";
+import { SectionHeader } from "#/components/SectionHeader";
 import { seo } from "#/lib/seo";
 
 export const Route = createFileRoute("/experience")({

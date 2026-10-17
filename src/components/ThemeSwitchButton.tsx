@@ -4,7 +4,7 @@ import MoonIcon from "#/assets/icons/moon.svg?react";
 import SunIcon from "#/assets/icons/sun.svg?react";
 import { useTheme } from "#/lib/theme";
 
-export default function ThemeSwitchButton() {
+export function ThemeSwitchButton() {
 	const { setTheme, resolvedTheme } = useTheme();
 	const isHydrated = useHydrated();
 

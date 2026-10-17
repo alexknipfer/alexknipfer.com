@@ -6,8 +6,7 @@ interface Props {
 	children: React.ReactNode;
 }
 
-/** Fades in from blurred + slightly scaled up on mount (CSS only, SSR-safe). */
-export default function BlurIn({ delay = 0, className, children }: Props) {
+export function BlurIn({ delay = 0, className, children }: Props) {
 	return (
 		<div
 			className={clsx("animate-blur-in", className)}

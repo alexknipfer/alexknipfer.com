@@ -2,12 +2,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import clsx from "clsx";
 
 import GitHubIcon from "#/assets/icons/github.svg?react";
-import BlurIn from "#/components/BlurIn";
-import DividerRow from "#/components/DividerRow";
-import Marquee from "#/components/Marquee";
-import Reveal from "#/components/Reveal";
-import SectionHeader from "#/components/SectionHeader";
-import TechnicalSkills from "#/components/TechnicalSkills";
+import { BlurIn } from "#/components/BlurIn";
+import { DividerRow } from "#/components/DividerRow";
+import { Marquee } from "#/components/Marquee";
+import { Reveal } from "#/components/Reveal";
+import { SectionHeader } from "#/components/SectionHeader";
+import { TechnicalSkills } from "#/components/TechnicalSkills";
 import { seo } from "#/lib/seo";
 
 export const Route = createFileRoute("/")({

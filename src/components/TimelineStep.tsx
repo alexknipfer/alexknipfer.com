@@ -1,4 +1,4 @@
-import Reveal from "#/components/Reveal";
+import { Reveal } from "#/components/Reveal";
 
 interface Props {
 	name: string;
@@ -6,7 +6,7 @@ interface Props {
 	index?: number;
 }
 
-export default function TimelineStep({ name, description, index = 0 }: Props) {
+export function TimelineStep({ name, description, index = 0 }: Props) {
 	return (
 		<li>
 			<Reveal

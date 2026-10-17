@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import Heading from "#/components/Heading";
-import PageHeader from "#/components/PageHeader";
-import Reveal from "#/components/Reveal";
-import TimelineStep from "#/components/TimelineStep";
+import { Heading } from "#/components/Heading";
+import { PageHeader } from "#/components/PageHeader";
+import { Reveal } from "#/components/Reveal";
+import { TimelineStep } from "#/components/TimelineStep";
 import { seo } from "#/lib/seo";
 
 export const Route = createFileRoute("/timeline")({

@@ -2,7 +2,7 @@ interface Props {
 	listItems: string[];
 }
 
-export default function List({ listItems }: Props) {
+export function List({ listItems }: Props) {
 	return (
 		<ul className="flex flex-col gap-2 text-sm leading-relaxed text-fg">
 			{listItems.map((item) => (

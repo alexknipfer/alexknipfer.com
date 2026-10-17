@@ -1,12 +1,11 @@
-import BlurIn from "#/components/BlurIn";
+import { BlurIn } from "#/components/BlurIn";
 
 interface Props {
 	title: string;
 	description?: React.ReactNode;
 }
 
-/** Centered, blur-in page intro used by the inner pages. */
-export default function PageHeader({ title, description }: Props) {
+export function PageHeader({ title, description }: Props) {
 	return (
 		<header className="py-16 text-center sm:py-24">
 			<BlurIn delay={0.1}>

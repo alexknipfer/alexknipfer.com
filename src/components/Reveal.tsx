@@ -6,8 +6,7 @@ interface Props {
 	children: React.ReactNode;
 }
 
-/** Fades content up once it scrolls into view. */
-export default function Reveal({ delay = 0, className, children }: Props) {
+export function Reveal({ delay = 0, className, children }: Props) {
 	const ref = useRef<HTMLDivElement>(null);
 	const [isVisible, setVisible] = useState(false);
 

@@ -7,8 +7,7 @@ interface Props {
 const bar =
 	"absolute left-0 block h-[1.5px] w-full rounded-full bg-current transition-all duration-300 ease-out";
 
-/** Two-bar hamburger that rotates into an X. */
-export default function MenuIcon({ isOpen }: Props) {
+export function MenuIcon({ isOpen }: Props) {
 	return (
 		<span aria-hidden="true" className="relative block size-4">
 			<span

@@ -6,8 +6,7 @@ interface Props {
 	className?: string;
 }
 
-/** `start ───────── end` row, used for compact lists. */
-export default function DividerRow({ start, end, className }: Props) {
+export function DividerRow({ start, end, className }: Props) {
 	return (
 		<div
 			className={clsx(

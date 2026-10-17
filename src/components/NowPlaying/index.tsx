@@ -1,6 +1,6 @@
-import useNowPlaying from "#/components/NowPlaying/useNowPlaying";
+import { useNowPlaying } from "#/components/NowPlaying/useNowPlaying";
 
-export default function NowPlaying() {
+export function NowPlaying() {
 	const { isPlaying, isLoading, data } = useNowPlaying();
 
 	if (isLoading) {

@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { getNowPlaying } from "#/server/spotify.server";
 
-// Preserves the legacy public HTTP contract of pages/api/now-playing.ts.
 export const Route = createFileRoute("/api/now-playing")({
 	server: {
 		handlers: {

@@ -1,7 +1,7 @@
-import Anchor from "#/components/Anchor";
-import Heading from "#/components/Heading";
-import List from "#/components/List";
-import Reveal from "#/components/Reveal";
+import { Anchor } from "#/components/Anchor";
+import { Heading } from "#/components/Heading";
+import { List } from "#/components/List";
+import { Reveal } from "#/components/Reveal";
 
 export interface ExperienceDetailsProps {
 	organizationName: string;
@@ -11,7 +11,7 @@ export interface ExperienceDetailsProps {
 	listItems: string[];
 }
 
-export default function ExperienceDetails({
+export function ExperienceDetails({
 	organizationName,
 	timeframe,
 	websiteUrl,

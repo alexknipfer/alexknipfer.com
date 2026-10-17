@@ -6,18 +6,11 @@ import {
 	useState,
 } from "react";
 
-/*
- * Minimal replacement for `next-themes` (`<ThemeProvider attribute="class">`).
- * Same storage key ("theme") and values, so returning visitors keep their
- * preference. `system` is the default and follows `prefers-color-scheme`.
- */
 export type Theme = "light" | "dark" | "system";
 type ResolvedTheme = "light" | "dark";
 
 const STORAGE_KEY = "theme";
 const MEDIA = "(prefers-color-scheme: dark)";
-
-// Runs before hydration (inlined in <head>) to avoid a flash of the wrong theme.
 export const THEME_INIT_SCRIPT = `(function(){try{var t=localStorage.getItem('${STORAGE_KEY}');var d=document.documentElement;var r=(t==='light'||t==='dark')?t:(window.matchMedia('${MEDIA}').matches?'dark':'light');d.classList.remove('light','dark');d.classList.add(r);d.style.colorScheme=r;}catch(e){}})();`;
 
 function readStoredTheme(): Theme {
@@ -50,7 +43,6 @@ const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
 	const [theme, setThemeState] = useState<Theme>("system");
-	// Unknown during SSR; set after mount (mirrors next-themes' behaviour).
 	const [resolvedTheme, setResolvedTheme] = useState<ResolvedTheme>();
 
 	useEffect(() => {

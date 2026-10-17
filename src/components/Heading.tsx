@@ -6,7 +6,7 @@ interface Props {
 	children: React.ReactNode;
 }
 
-export default function Heading({ level, children, className }: Props) {
+export function Heading({ level, children, className }: Props) {
 	const Tag = level;
 
 	return (

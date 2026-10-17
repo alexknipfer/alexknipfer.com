@@ -9,8 +9,8 @@ import {
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { Analytics } from "@vercel/analytics/react";
 
-import Footer from "#/components/Footer";
-import Nav from "#/components/Nav";
+import { Footer } from "#/components/Footer";
+import { Nav } from "#/components/Nav";
 import { THEME_INIT_SCRIPT, ThemeProvider } from "#/lib/theme";
 import appCss from "../styles.css?url";
 
