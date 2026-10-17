@@ -36,6 +36,8 @@ Personal portfolio site for Alex Knipfer using TanStack Start.
 ## Stack
 
 - React 19 + TanStack Start / TanStack Router (file-based routes in `src/routes`)
+- TanStack Query (`@tanstack/react-query`) wired to the router via
+  `@tanstack/react-router-ssr-query` (see Data fetching)
 - Vite 8, Nitro (Vercel preset auto-detected on Vercel)
 - Tailwind CSS v4 (CSS-first config in `src/styles.css`, class-based dark mode)
 - Biome (lint + format), Vitest (unit tests), pnpm
@@ -67,6 +69,26 @@ public/static/           favicons + images (same URLs as legacy)
 ```
 
 Imports use `#/*` → `src/*` (package.json `imports`).
+
+## Data fetching
+
+Always fetch through TanStack Query. Never fetch manually in `useEffect` (no
+`useEffect` + `useState` loading/error plumbing, no hand-rolled focus/refetch listeners).
+
+- Server logic lives in a `createServerFn` (`src/server/*.functions.ts`); call it from a
+  `queryFn`.
+- Define a `queryOptions(...)` object (key + `queryFn` + options) next to the hook that uses
+  it and export it, e.g. `nowPlayingQueryOptions` in
+  `src/components/NowPlaying/useNowPlaying.ts`. Reuse that object everywhere; don't
+  duplicate query keys.
+- Components read data with `useQuery` / `useSuspenseQuery`. Route loaders that need the data
+  up front prefetch it with `context.queryClient.ensureQueryData(options)` — the root route
+  is `createRootRouteWithContext<{ queryClient: QueryClient }>()`.
+- Writes use `useMutation` and invalidate the affected query keys.
+- `src/router.tsx` creates a fresh `QueryClient` per router (never module scope, so SSR
+  requests don't share cache) and calls `setupRouterSsrQueryIntegration`, which also
+  provides `QueryClientProvider` and SSR dehydration/hydration. Don't add another provider.
+- Query devtools are registered as a panel in the `TanStackDevtools` shell in `__root.tsx`.
 
 ## Environment variables
 
