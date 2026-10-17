@@ -1,17 +1,24 @@
-# V2 of alexknipfer.com
+# alexknipfer.com
 
-This is v2 of my personal portfolio website. My website has gone through many transformations from static HTML & CSS, Bootstrap, React, and now Next.js + Tailwind.
+Personal portfolio site built with [TanStack Start](https://tanstack.com/start), React 19, Tailwind CSS v4, and Biome. Previously Next.js (see `AGENTS.md` for migration notes).
 
-## Running Locally
-
-Install dependencies:
+## Running locally
 
 ```bash
-yarn
+pnpm install
+pnpm dev
 ```
 
-Start the development server:
+Optional: set `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, and `SPOTIFY_REFRESH_TOKEN` (for example in `.env.local`) to enable the footer's "Now Playing" widget.
 
-```bash
-yarn dev
-```
+## Scripts
+
+| Command | Description |
+| --- | --- |
+| `pnpm dev` | Dev server on http://localhost:3000 |
+| `pnpm build` / `pnpm start` | Production build / run it |
+| `pnpm test` | Vitest |
+| `pnpm typecheck` | TypeScript |
+| `pnpm check` | Biome lint + format check |
+
+Deployed on Vercel (`vercel.json`, Nitro).
