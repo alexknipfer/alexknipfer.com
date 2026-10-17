@@ -1,0 +1,160 @@
+@import "tailwindcss";
+@import "@fontsource/monaspace-neon/400.css";
+@import "@fontsource/monaspace-neon/500.css";
+@import "@fontsource/monaspace-neon/600.css";
+@import "@fontsource/monaspace-neon/700.css";
+@import "@fontsource/monaspace-krypton/500.css";
+@import "@fontsource/monaspace-krypton/700.css";
+
+/* `.dark` is toggled on <html> by src/lib/theme.tsx. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Semantic palette; values swap in `.dark` below. */
+:root {
+	--surface: #fff;
+	--surface-muted: var(--color-neutral-50);
+	--surface-elevated: var(--color-neutral-100);
+	--fg: var(--color-neutral-700);
+	--fg-muted: var(--color-neutral-500);
+	--fg-dimmed: var(--color-neutral-400);
+	--fg-highlighted: var(--color-neutral-900);
+	--line: var(--color-neutral-200);
+	--line-accented: var(--color-neutral-300);
+}
+
+.dark {
+	--surface: var(--color-neutral-900);
+	--surface-muted: var(--color-neutral-800);
+	--surface-elevated: var(--color-neutral-800);
+	--fg: var(--color-neutral-200);
+	--fg-muted: var(--color-neutral-400);
+	--fg-dimmed: var(--color-neutral-500);
+	--fg-highlighted: #fff;
+	--line: var(--color-neutral-800);
+	--line-accented: var(--color-neutral-700);
+}
+
+@theme inline {
+	--font-sans: "Monaspace Neon", ui-monospace, SFMono-Regular, Menlo, monospace,
+		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	--font-title: "Monaspace Krypton", ui-monospace, SFMono-Regular, Menlo,
+		monospace, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+		"Noto Color Emoji";
+
+	--color-primary: #f8ba74;
+	--color-surface: var(--surface);
+	--color-surface-muted: var(--surface-muted);
+	--color-surface-elevated: var(--surface-elevated);
+	--color-fg: var(--fg);
+	--color-fg-muted: var(--fg-muted);
+	--color-fg-dimmed: var(--fg-dimmed);
+	--color-fg-highlighted: var(--fg-highlighted);
+	--color-line: var(--line);
+	--color-line-accented: var(--line-accented);
+
+	--animate-blur-in: blur-in 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) both;
+	--animate-marquee: marquee var(--duration, 40s) linear infinite;
+}
+
+@keyframes blur-in {
+	from {
+		opacity: 0;
+		filter: blur(20px);
+		transform: scale(1.1);
+	}
+	to {
+		opacity: 1;
+		filter: blur(0);
+		transform: scale(1);
+	}
+}
+
+@keyframes marquee {
+	from {
+		transform: translate3d(0, 0, 0);
+	}
+	to {
+		transform: translate3d(calc(-100% - var(--gap)), 0, 0);
+	}
+}
+
+@layer base {
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		border-color: var(--color-line);
+	}
+
+	html {
+		overflow-y: scroll;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--font-title);
+	}
+
+	button:not(:disabled),
+	[role="button"]:not(:disabled) {
+		cursor: pointer;
+	}
+
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+}
+
+/* Scroll-triggered fade-up, toggled by src/components/Reveal.tsx */
+[data-reveal] {
+	opacity: 0;
+	transform: translateY(20px);
+	transition:
+		opacity 0.5s ease-out,
+		transform 0.5s ease-out;
+}
+
+[data-reveal="visible"] {
+	opacity: 1;
+	transform: none;
+}
+
+/* Accent underline that draws in from the left on hover */
+.link-animation {
+	background-image:
+		linear-gradient(var(--color-primary), var(--color-primary)),
+		linear-gradient(var(--color-line-accented), var(--color-line-accented));
+	background-position:
+		0 100%,
+		0 100%;
+	background-repeat: no-repeat;
+	background-size:
+		0% 2px,
+		100% 1px;
+	padding-bottom: 1px;
+	transition: background-size 0.6s cubic-bezier(0, 0.5, 0, 1);
+}
+
+.link-animation:hover,
+.link-animation:focus-visible {
+	background-size:
+		100% 2px,
+		100% 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	::before,
+	::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		transition-delay: 0s !important;
+	}
+}

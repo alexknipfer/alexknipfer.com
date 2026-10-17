@@ -1,4 +1,17 @@
-.next
 node_modules
-.env.local
 .DS_Store
+dist
+dist-ssr
+*.local
+.env
+.nitro
+.tanstack
+.wrangler
+.output
+.vinxi
+__unconfig*
+todos.json
+
+# legacy Next.js reference (not part of the app)
+legacy-source
+.vercel
