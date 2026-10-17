@@ -1,15 +1,12 @@
-// Read per request (never at module scope) so secrets stay server-side and
-// work on runtimes that inject env at request time.
-export function getSpotifyEnv() {
-	const clientId = process.env.SPOTIFY_CLIENT_ID;
-	const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
-	const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN;
+import { createEnv } from "@t3-oss/env-core";
+import { z } from "zod";
 
-	if (!clientId || !clientSecret || !refreshToken) {
-		throw new Error(
-			"Must configure SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET and SPOTIFY_REFRESH_TOKEN environment variables.",
-		);
-	}
-
-	return { clientId, clientSecret, refreshToken };
-}
+export const env = createEnv({
+	server: {
+		SPOTIFY_CLIENT_ID: z.string().min(1),
+		SPOTIFY_CLIENT_SECRET: z.string().min(1),
+		SPOTIFY_REFRESH_TOKEN: z.string().min(1),
+	},
+	runtimeEnv: process.env,
+	emptyStringAsUndefined: true,
+});

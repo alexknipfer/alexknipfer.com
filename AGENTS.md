@@ -65,7 +65,7 @@ src/
     middleware.ts        server fn middleware (spotifyClientMiddleware → context.spotifyClient)
     spotify-auth.server.ts  refresh-token → access-token exchange
     spotify/             Spotify API client (spotify.server.ts), server fns (spotify.functions.ts)
-  env/env.server.ts      per-request server env access (getSpotifyEnv)
+  env/env.server.ts      validated server env (`env`, @t3-oss/env-core + zod)
   types/spotify.ts       Spotify Web API types
   assets/icons/          SVGs imported as components: `import X from "#/assets/icons/x.svg?react"`
 public/static/           favicons + images (same URLs as legacy)
@@ -97,7 +97,8 @@ Always fetch through TanStack Query. Never fetch manually in `useEffect` (no
 
 ## Environment variables
 
-Server-only (never prefix with `VITE_`), read per request inside server code:
+Server-only (never prefix with `VITE_`), declared and validated in `src/env/env.server.ts`;
+import `env` from `#/env/env.server` instead of reading `process.env` directly:
 
 | Var                     | Purpose                                         |
 | ----------------------- | ----------------------------------------------- |
