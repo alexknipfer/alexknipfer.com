@@ -1,7 +1,7 @@
 import { useNowPlaying } from "#/components/NowPlaying/useNowPlaying";
 
 export function NowPlaying() {
-	const { isPlaying, isLoading, data } = useNowPlaying();
+	const { track, isLoading } = useNowPlaying();
 
 	if (isLoading) {
 		return (
@@ -14,8 +14,6 @@ export function NowPlaying() {
 			</div>
 		);
 	}
-
-	const track = isPlaying ? data?.attributes : undefined;
 
 	return (
 		<article className="flex w-64 animate-blur-in items-center gap-3 rounded-lg bg-surface-elevated/60 p-2 pr-3">
